@@ -65,4 +65,45 @@
             font-size: 34px;
           }
 
+          .triangle {
+            margin: auto;
+            width: 960px;
+            background: rgba(0, 124, 184, 0.5);
+            padding: 10px;
+            position: relative;
+            color: #fff;
+            text-align: left;
+            font-size: 25px;
+          }
+
+          .triangle::after {
+            content: '';
+            position: absolute;
+            left: 450px;
+            bottom: -60px;
+            border: 30px solid transparent;
+            border-top: 30px solid rgba(0, 124, 184, 0.5);
+          }
+
+          .rar {
+            position: absolute;
+            width: 200px;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            background-color: rgba(0, 124, 184, 1);
+            text-align: center;
+          }
+
+          .rar::before {
+            vertical-align: middle;
+            height: 100%;
+            display: inline-block;
+            content: "";
+          }
+
+          .rar p {
+            display: inline-block;
+          }
+
           @media (max-width:980px) {}
