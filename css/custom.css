@@ -44,6 +44,20 @@
           }
           /*////////////////////////////////////firstblock////////////////////////////////////*/
 
-          .firstblock {}
+          .firstblock {
+            background-image: url(../img/firstbg.jpg);
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 740px;
+            width: 100%;
+            text-align: center;
+          }
+
+          h1 {
+            padding-top: 120px;
+            color: white;
+            font-size: 34px;
+          }
 
           @media (max-width:980px) {}
