@@ -54,6 +54,11 @@
             text-align: center;
           }
 
+          .firstblockfront {
+            background: linear-gradient(to right, rgba(102, 62, 88, 0.9), rgba(0, 0, 0, 0.4));
+            height: 740px;
+          }
+
           h1 {
             padding-top: 120px;
             color: white;
