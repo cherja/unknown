@@ -123,18 +123,60 @@
           }
 
           .threedeliveries {
-            background-color: gray;
             margin: auto;
             width: 1100px;
             height: 676px;
           }
 
           .threedeliveriesform {
-            display: inline-block;
+            width: 605px;
+            height: 676px;
+            float: left;
           }
 
-          .secondblockimg {
-            display: inline-block;
+          .threedeliveriesimg {
+            width: 495px;
+            height: 676px;
+            background-image: url(../img/secondbman.png);
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            float: left;
+          }
+
+          form {
+            text-align: center;
+            background-color: white;
+            font-size: 21.5px;
+            padding: 13px 45px;
+            border: 1px solid gray;
+          }
+
+          .secondblock input[type="submit"] {
+            width: 365px;
+            height: 65px;
+            border-radius: 10px;
+            background-color: #7680f3;
+          }
+
+          .secondblock input {
+            text-align: center;
+            width: 360px;
+            height: 60px;
+          }
+
+          h2 {
+            font-size: 45px;
+            margin: 10px;
+          }
+
+          .hat {
+            padding-left: 40px;
+          }
+
+          .hat p {
+            font-size: 30px;
+            margin: 10px;
           }
 
           @media (max-width:980px) {}
