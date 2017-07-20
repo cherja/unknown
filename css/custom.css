@@ -16,6 +16,10 @@
             text-align: justify;
           }
 
+          header span {
+            font-weight: bold;
+          }
+
           header::after {
             width: 100%;
             display: inline-block;
@@ -42,6 +46,21 @@
             color: deeppink;
             text-decoration: none;
           }
+
+          .adress {
+            text-align: center;
+          }
+
+          .tel {
+            text-align: right;
+            font-size: 18px;
+            font-weight: bold;
+          }
+
+          .col {
+            font-size: 16px;
+            font-weight: normal;
+          }
           /*////////////////////////////////////firstblock////////////////////////////////////*/
 
           .firstblock {
@@ -52,58 +71,41 @@
             height: 740px;
             width: 100%;
             text-align: center;
-          }
-
-          .firstblockfront {
-            background: linear-gradient(to right, rgba(102, 62, 88, 0.9), rgba(0, 0, 0, 0.4));
-            height: 740px;
+            padding-top: 120px;
           }
 
           h1 {
-            padding-top: 120px;
             color: white;
             font-size: 34px;
           }
 
           .triangle {
             margin: auto;
-            width: 960px;
+            display: inline-block;
             background: rgba(0, 124, 184, 0.5);
-            padding: 10px;
+            padding: 20px;
             position: relative;
             color: #fff;
-            text-align: left;
-            font-size: 25px;
+            font-size: 24px;
           }
 
           .triangle::after {
             content: '';
             position: absolute;
-            left: 450px;
+            left: 0;
+            right: 0;
+            width: 0;
+            margin: auto;
             bottom: -60px;
             border: 30px solid transparent;
             border-top: 30px solid rgba(0, 124, 184, 0.5);
           }
 
-          .rar {
-            position: absolute;
-            width: 200px;
-            top: 0px;
-            right: 0px;
-            bottom: 0px;
-            background-color: rgba(0, 124, 184, 1);
-            text-align: center;
-          }
-
-          .rar::before {
-            vertical-align: middle;
-            height: 100%;
-            display: inline-block;
-            content: "";
-          }
-
-          .rar p {
-            display: inline-block;
+          .triangle>span {
+            background: rgba(0, 124, 184, 1);
+            float: right;
+            padding: 20px;
+            margin: -20px -20px -20px 20px;
           }
           /*/////////////////////////////////////secondblock*/
 
@@ -114,12 +116,6 @@
             background-repeat: no-repeat;
             height: 970px;
             width: 100%;
-          }
-
-          .secondblockfront {
-            background: rgba(255, 255, 255, 0.8);
-            height: 970px;
-            padding-top: 167px;
           }
 
           .threedeliveries {
