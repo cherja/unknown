@@ -1,192 +1,224 @@
-              * {
-              box-sizing: border-box;
-              font-family: 'Roboto', sans-serif;
-            }
+                                              * {
+                                              box-sizing: border-box;
+                                              font-family: 'Roboto', sans-serif;
+                                            }
 
-            .wrapper {
-              max-width: 1920px;
-              margin: auto;
-              box-shadow: 0 0 20px 15px rgba(0, 0, 0, 0.2);
-            }
-            /*///////////////////////////Header////////////////////////////////////*/
+                                            .wrapper {
+                                              max-width: 1920px;
+                                              margin: auto;
+                                              box-shadow: 0 0 20px 15px rgba(0, 0, 0, 0.2);
+                                            }
+                                            /*///////////////////////////Header////////////////////////////////////*/
 
-            .ham {
-              display: none;
-            }
+                                            .ham {
+                                              display: none;
+                                            }
 
-            header {
-              width: 1170px;
-              height: 130px;
-              margin: auto;
-              text-align: justify;
-            }
+                                            header {
+                                              width: 1170px;
+                                              height: 130px;
+                                              margin: auto;
+                                              text-align: justify;
+                                            }
 
-            header span {
-              font-weight: bold;
-            }
+                                            header span {
+                                              font-weight: bold;
+                                            }
 
-            header::after {
-              width: 100%;
-              display: inline-block;
-              content: "";
-            }
+                                            header::after {
+                                              width: 100%;
+                                              display: inline-block;
+                                              content: "";
+                                            }
 
-            header div, header p {
-              display: inline-block;
-              vertical-align: middle;
-            }
+                                            header div, header p {
+                                              display: inline-block;
+                                              vertical-align: middle;
+                                            }
 
-            .logo::before {
-              vertical-align: middle;
-              height: 130px;
-              display: inline-block;
-              content: "";
-            }
+                                            .logo::before {
+                                              vertical-align: middle;
+                                              height: 130px;
+                                              display: inline-block;
+                                              content: "";
+                                            }
 
-            header img {
-              vertical-align: middle;
-            }
+                                            header img {
+                                              vertical-align: middle;
+                                            }
 
-            header a:first-child {
-              color: deeppink;
-              text-decoration: none;
-            }
+                                            header a:first-child {
+                                              color: deeppink;
+                                              text-decoration: none;
+                                            }
 
-            .adress {
-              text-align: center;
-            }
+                                            .adress {
+                                              text-align: center;
+                                            }
 
-            .tel {
-              text-align: right;
-              font-size: 18px;
-              font-weight: bold;
-            }
+                                            .tel {
+                                              text-align: right;
+                                              font-size: 18px;
+                                              font-weight: bold;
+                                            }
 
-            .col {
-              font-size: 16px;
-              font-weight: normal;
-            }
-            /*////////////////////////////////////firstblock////////////////////////////////////*/
+                                            .col {
+                                              font-size: 16px;
+                                              font-weight: normal;
+                                            }
+                                            /*////////////////////////////////////firstblock////////////////////////////////////*/
 
-            .firstblock {
-              background-image: url(../img/firstbg.jpg);
-              background-position: center center;
-              background-size: cover;
-              background-repeat: no-repeat;
-              height: 740px;
-              width: 100%;
-              text-align: center;
-              padding-top: 120px;
-            }
+                                            .firstblock {
+                                              background-image: url(../img/firstbg.jpg);
+                                              background-position: center center;
+                                              background-size: cover;
+                                              background-repeat: no-repeat;
+                                              height: 740px;
+                                              width: 100%;
+                                              text-align: center;
+                                              padding-top: 120px;
+                                            }
 
-            h1 {
-              color: white;
-              font-size: 34px;
-            }
+                                            h1 {
+                                              color: white;
+                                              font-size: 34px;
+                                            }
 
-            .triangle {
-              margin: auto;
-              display: inline-block;
-              background: rgba(0, 124, 184, 0.5);
-              padding: 20px;
-              position: relative;
-              color: #fff;
-              font-size: 24px;
-            }
+                                            .triangle {
+                                              margin: auto;
+                                              display: inline-block;
+                                              background: rgba(0, 124, 184, 0.5);
+                                              padding: 20px;
+                                              position: relative;
+                                              color: #fff;
+                                              font-size: 24px;
+                                            }
 
-            .triangle::after {
-              content: '';
-              position: absolute;
-              left: 0;
-              right: 0;
-              width: 0;
-              margin: auto;
-              bottom: -60px;
-              border: 30px solid transparent;
-              border-top: 30px solid rgba(0, 124, 184, 0.5);
-            }
+                                            .triangle::after {
+                                              content: '';
+                                              position: absolute;
+                                              left: 0;
+                                              right: 0;
+                                              width: 0;
+                                              margin: auto;
+                                              bottom: -60px;
+                                              border: 30px solid transparent;
+                                              border-top: 30px solid rgba(0, 124, 184, 0.5);
+                                            }
 
-            .triangle>span {
-              background: rgba(0, 124, 184, 1);
-              float: right;
-              padding: 20px;
-              margin: -20px -20px -20px 20px;
-            }
-            /*/////////////////////////////////////secondblock*/
+                                            .triangle>span {
+                                              background: rgba(0, 124, 184, 1);
+                                              float: right;
+                                              padding: 20px;
+                                              margin: -20px -20px -20px 20px;
+                                            }
 
-            .secondblock {
-              background-image: url(../img/nlo.png);
-              background-position: center center;
-              background-size: cover;
-              background-repeat: no-repeat;
-              height: 970px;
-              width: 100%;
-            }
+                                            .add-header+.add-header::after {
+                                              content: '';
+                                              width: 300px;
+                                              border: 1.5px solid white;
+                                              position: absolute;
+                                              top: 8px;
+                                              right: 105px;
+                                            }
 
-            .threedeliveries {
-              margin: auto;
-              width: 1100px;
-              height: 676px;
-            }
+                                            .add-header+.add-header {
+                                              padding-left: 160px;
+                                            }
 
-            .threedeliveriesform {
-              width: 605px;
-              height: 676px;
-              float: left;
-            }
+                                            .add-header span {
+                                              display: block;
+                                            }
 
-            .threedeliveriesimg {
-              width: 495px;
-              height: 676px;
-              background-image: url(../img/secondbman.png);
-              background-position: center center;
-              background-size: cover;
-              background-repeat: no-repeat;
-              float: left;
-            }
+                                            .add-header {
+                                              display: inline-block;
+                                              text-align: center;
+                                              font-size: 20px;
+                                              color: white;
+                                              margin: 20px;
+                                              position: relative;
+                                              vertical-align: top;
+                                            }
 
-            form {
-              text-align: center;
-              background-color: white;
-              font-size: 21.5px;
-              padding: 13px 45px;
-              border: 1px solid gray;
-            }
+                                            .add-headers {
+                                              text-align: center;
+                                              padding-top: 100px;
+                                            }
+                                            /*/////////////////////////////////////secondblock*/
 
-            .secondblock input[type="submit"] {
-              width: 365px;
-              height: 65px;
-              border-radius: 10px;
-              background-color: #7680f3;
-            }
+                                            .secondblock {
+                                              background-image: url(../img/nlo.png);
+                                              background-position: center center;
+                                              background-size: cover;
+                                              background-repeat: no-repeat;
+                                              height: 970px;
+                                              width: 100%;
+                                            }
 
-            .secondblock input {
-              text-align: center;
-              width: 360px;
-              height: 60px;
-            }
+                                            .threedeliveries {
+                                              margin: auto;
+                                              width: 1100px;
+                                              height: 676px;
+                                            }
 
-            h2 {
-              font-size: 45px;
-              margin: 10px;
-            }
+                                            .threedeliveriesform {
+                                              width: 605px;
+                                              height: 676px;
+                                              float: left;
+                                            }
 
-            .hat {
-              padding-left: 40px;
-            }
+                                            .threedeliveriesimg {
+                                              width: 495px;
+                                              height: 676px;
+                                              background-image: url(../img/secondbman.png);
+                                              background-position: center center;
+                                              background-size: cover;
+                                              background-repeat: no-repeat;
+                                              float: left;
+                                            }
 
-            .hat p {
-              font-size: 30px;
-              margin: 10px;
-            }
+                                            form {
+                                              text-align: center;
+                                              background-color: white;
+                                              font-size: 21.5px;
+                                              padding: 13px 45px;
+                                              border: 1px solid gray;
+                                            }
 
-            @media (max-width:980px) {
-              header {
-                display: none;
-              }
-              .active {
-                display: block;
-              }
-              .ham {
-                display: block;
-              }
+                                            .secondblock input[type="submit"] {
+                                              width: 365px;
+                                              height: 65px;
+                                              border-radius: 10px;
+                                              background-color: #7680f3;
+                                            }
+
+                                            .secondblock input {
+                                              text-align: center;
+                                              width: 360px;
+                                              height: 60px;
+                                            }
+
+                                            h2 {
+                                              font-size: 45px;
+                                              margin: 10px;
+                                            }
+
+                                            .hat {
+                                              padding-left: 40px;
+                                            }
+
+                                            .hat p {
+                                              font-size: 30px;
+                                              margin: 10px;
+                                            }
+
+                                            @media (max-width:980px) {
+                                              header {
+                                                display: none;
+                                              }
+                                              .active {
+                                                display: block;
+                                              }
+                                              .ham {
+                                                display: block;
+                                              }
