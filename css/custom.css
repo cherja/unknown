@@ -113,21 +113,24 @@
             margin: -20px -20px -20px 20px;
           }
 
+          .add-headers {
+            text-align: center;
+            padding-top: 100px;
+          }
+
+          .add-header img {
+            margin: auto;
+            display: block;
+          }
+
           .add-header+.add-header::after {
             content: '';
-            width: 300px;
+            width: 50px;
             border: 1.5px solid white;
+            display: inline-block;
             position: absolute;
-            top: 8px;
-            right: 105px;
-          }
-
-          .add-header+.add-header {
-            padding-left: 160px;
-          }
-
-          .add-header span {
-            display: block;
+            /*top: 8px;
+            right: 105px;*/
           }
 
           .add-header {
@@ -138,11 +141,7 @@
             margin: 20px;
             position: relative;
             vertical-align: top;
-          }
-
-          .add-headers {
-            text-align: center;
-            padding-top: 100px;
+            width: 300px;
           }
           /*/////////////////////////////////////secondblock*/
 
