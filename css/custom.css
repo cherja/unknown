@@ -19,7 +19,7 @@
             height: 130px;
             margin: auto;
             text-align: justify;
-            padding: 20px 0;
+            padding: 20px 20px;
           }
 
           header::after {
@@ -192,12 +192,58 @@
             margin: 10px;
           }
 
-          @media screen and (max-width: 980px) {
+          @media screen and (max-width: 1050px) {
+            body {
+              font-size: 12px;
+            }
+            header {
+              height: 110px;
+            }
+            .add-header {
+              width: 200px;
+            }
+          }
+
+          @media screen and (max-width: 820px) {
             header {
               height: auto;
+              font-size: 1.2em;
             }
             header div, header p, .tel {
               display: block;
               text-align: center;
+            }
+            body {
+              font-size: 10px;
+            }
+            .add-header {
+              margin: auto;
+              display: block;
+              height: auto;
+              padding-top: 30px;
+            }
+            .add-headers {
+              padding-top: 50px;
+            }
+            .add-header i {
+              font-size: 1em;
+            }
+            .add-header+.add-header {
+              border-left: none;
+            }
+            .triangle>span {
+              float: none;
+              display: block;
+              margin: auto;
+              padding: 0;
+              margin: 0 -20px;
+            }
+            .triangle {
+              line-height: 2;
+              padding: 0 20px;
+              margin: 10px;
+            }
+            .triangle::after {
+              border-top: 30px solid rgba(0, 124, 184, 1);
             }
           }
