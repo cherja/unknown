@@ -14,20 +14,12 @@
           }
           /*///////////////////////////Header////////////////////////////////////*/
 
-          .ham {
-            display: none;
-          }
-
           header {
-            width: 1170px;
+            max-width: 1170px;
             height: 130px;
             margin: auto;
             text-align: justify;
             padding: 20px 0;
-          }
-
-          header span {
-            font-weight: bold;
           }
 
           header::after {
@@ -200,14 +192,12 @@
             margin: 10px;
           }
 
-          @media (max-width:980px) {
+          @media screen and (max-width: 980px) {
             header {
-              display: none;
+              height: auto;
             }
-            .active {
+            header div, header p, .tel {
               display: block;
-            }
-            .ham {
-              display: block;
+              text-align: center;
             }
           }
