@@ -1,291 +1,329 @@
-          * {
-            font-family: 'Roboto', sans-serif;
-            box-sizing: border-box;
-          }
+        * {
+          font-family: 'Roboto', sans-serif;
+          box-sizing: border-box;
+        }
 
+        body {
+          font-size: 16px;
+        }
+
+        .wrapper {
+          max-width: 1920px;
+          margin: auto;
+          box-shadow: 0 0 20px 15px rgba(0, 0, 0, 0.2);
+        }
+        /*///////////////////////////Header////////////////////////////////////*/
+
+        header {
+          max-width: 1170px;
+          height: 130px;
+          margin: auto;
+          text-align: justify;
+          padding: 20px 20px;
+        }
+
+        header::after {
+          width: 100%;
+          display: inline-block;
+          content: "";
+        }
+
+        header div, header p {
+          display: inline-block;
+          vertical-align: middle;
+        }
+
+        header img {
+          vertical-align: middle;
+        }
+
+        header a:first-child {
+          color: deeppink;
+          text-decoration: none;
+          font-size: 1.2em;
+          font-weight: bold;
+        }
+
+        .adress {
+          text-align: center;
+        }
+
+        .tel {
+          text-align: right;
+        }
+        /*////////////////////////////////////firstblock////////////////////////////////////*/
+
+        .firstblock {
+          background-image: url(../img/firstbg.jpg);
+          background-position: center center;
+          background-size: cover;
+          background-repeat: no-repeat;
+          height: calc(100vh - 130px);
+          min-height: 700px;
+          width: 100%;
+          text-align: center;
+          padding-top: 120px;
+        }
+
+        h1 {
+          color: white;
+        }
+
+        .triangle {
+          margin: auto;
+          display: inline-block;
+          background: rgba(0, 124, 184, 0.5);
+          padding: 20px;
+          position: relative;
+          color: #fff;
+          font-size: 1.5em;
+        }
+
+        .triangle::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          right: 0;
+          width: 0;
+          margin: auto;
+          bottom: -60px;
+          border: 30px solid transparent;
+          border-top: 30px solid rgba(0, 124, 184, 0.5);
+        }
+
+        .triangle>span {
+          background: rgba(0, 124, 184, 1);
+          float: right;
+          padding: 20px;
+          margin: -20px -20px -20px 20px;
+        }
+
+        .add-headers {
+          text-align: center;
+          padding-top: 100px;
+        }
+
+        .add-header i {
+          margin: auto;
+          display: block;
+          font-size: 2em;
+        }
+
+        .add-header+.add-header {
+          border-left: 1.5px solid white;
+        }
+
+        .add-header {
+          display: inline-block;
+          text-align: center;
+          font-size: 20px;
+          color: white;
+          margin: 0;
+          position: relative;
+          vertical-align: top;
+          width: 300px;
+          height: 70px;
+        }
+        /*/////////////////////////////////////secondblock*/
+
+        .secondblock {
+          background-image: url(../img/nlo.png);
+          background-position: center center;
+          background-size: cover;
+          background-repeat: no-repeat;
+          height: 970px;
+          width: 100%;
+        }
+
+        .threedeliveries {
+          margin: auto;
+          width: 1100px;
+          height: 676px;
+        }
+
+        .threedeliveriesform {
+          width: 605px;
+          height: 676px;
+          float: left;
+        }
+
+        .threedeliveriesimg {
+          width: 495px;
+          height: 676px;
+          background-image: url(../img/secondbman.png);
+          background-position: center center;
+          background-size: cover;
+          background-repeat: no-repeat;
+          float: left;
+        }
+
+        form {
+          text-align: center;
+          background-color: white;
+          font-size: 21.5px;
+          padding: 13px 45px;
+          border: 1px solid gray;
+        }
+
+        .secondblock input[type="submit"] {
+          width: 365px;
+          height: 65px;
+          border-radius: 10px;
+          background-color: #7680f3;
+        }
+
+        .secondblock input {
+          text-align: center;
+          width: 360px;
+          height: 60px;
+        }
+
+        h2 {
+          font-size: 45px;
+          margin: 10px;
+        }
+
+        .hat {
+          padding-left: 40px;
+        }
+
+        .hat p {
+          font-size: 30px;
+          margin: 10px;
+        }
+        /*/////////////////////sixth//////////////////////////////////////*/
+
+        .sixthblock {
+          text-align: center;
+          background-color: gray;
+          padding-bottom: 60px;
+        }
+
+        .sixtcontent {
+          display: inline-block;
+          margin: 30px 100px;
+          color: white;
+          font-size: 1.2em;
+          vertical-align: top;
+        }
+
+        .sixthblock h2 {
+          margin: 0;
+          padding: 60px 0;
+        }
+
+        .circle {
+          width: 165px;
+          height: 165px;
+          border-radius: 50%;
+          background-image: url(../img/secondbman.png);
+          background-position: center center;
+          background-size: cover;
+          background-repeat: no-repeat;
+          margin-bottom: 40px;
+          box-shadow: 0 0 0 6px #888, 0 0 0 8px #000;
+        }
+        /*////////////////////////////eleventhblock/////////////////////////////*/
+
+        .eleventhblock {
+          text-align: center;
+          padding-bottom: 60px;
+        }
+
+        .eleventhblock h2 {
+          margin: 0;
+          padding: 60px;
+        }
+
+        .eleventhblock div {
+          font-size: 1.5em;
+          color: white;
+          padding-top: 90px;
+          margin: 10px;
+          width: 467px;
+          height: 280px;
+          background-image: url(../img/nlo.png);
+          background-position: center center;
+          background-size: cover;
+          background-repeat: no-repeat;
+          display: inline-block;
+        }
+
+        @media screen and (max-width: 1050px) {
           body {
-            font-size: 16px;
+            font-size: 12px;
           }
-
-          .wrapper {
-            max-width: 1920px;
-            margin: auto;
-            box-shadow: 0 0 20px 15px rgba(0, 0, 0, 0.2);
-          }
-          /*///////////////////////////Header////////////////////////////////////*/
-
           header {
-            max-width: 1170px;
-            height: 130px;
-            margin: auto;
-            text-align: justify;
-            padding: 20px 20px;
+            height: 110px;
           }
-
-          header::after {
-            width: 100%;
-            display: inline-block;
-            content: "";
+          .add-header {
+            width: 200px;
           }
+        }
 
-          header div, header p {
-            display: inline-block;
-            vertical-align: middle;
-          }
-
-          header img {
-            vertical-align: middle;
-          }
-
-          header a:first-child {
-            color: deeppink;
-            text-decoration: none;
+        @media screen and (max-width: 820px) {
+          header {
+            height: auto;
             font-size: 1.2em;
-            font-weight: bold;
           }
-
-          .adress {
+          header div, header p, .tel {
+            display: block;
             text-align: center;
           }
-
-          .tel {
-            text-align: right;
+          body {
+            font-size: 10px;
           }
-          /*////////////////////////////////////firstblock////////////////////////////////////*/
-
-          .firstblock {
-            background-image: url(../img/firstbg.jpg);
-            background-position: center center;
-            background-size: cover;
-            background-repeat: no-repeat;
-            height: calc(100vh - 130px);
-            min-height: 700px;
-            width: 100%;
-            text-align: center;
-            padding-top: 120px;
-          }
-
-          h1 {
-            color: white;
-          }
-
-          .triangle {
-            margin: auto;
-            display: inline-block;
-            background: rgba(0, 124, 184, 0.5);
-            padding: 20px;
-            position: relative;
-            color: #fff;
-            font-size: 1.5em;
-          }
-
-          .triangle::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            right: 0;
-            width: 0;
-            margin: auto;
-            bottom: -60px;
-            border: 30px solid transparent;
-            border-top: 30px solid rgba(0, 124, 184, 0.5);
-          }
-
-          .triangle>span {
-            background: rgba(0, 124, 184, 1);
-            float: right;
-            padding: 20px;
-            margin: -20px -20px -20px 20px;
-          }
-
-          .add-headers {
-            text-align: center;
-            padding-top: 100px;
-          }
-
-          .add-header i {
+          .add-header {
             margin: auto;
             display: block;
-            font-size: 2em;
+            height: auto;
+            padding-top: 30px;
           }
-
+          .add-headers {
+            padding-top: 50px;
+          }
+          .add-header i {
+            font-size: 1em;
+          }
           .add-header+.add-header {
-            border-left: 1.5px solid white;
+            border-left: none;
           }
-
-          .add-header {
-            display: inline-block;
-            text-align: center;
-            font-size: 20px;
-            color: white;
-            margin: 0;
-            position: relative;
-            vertical-align: top;
-            width: 300px;
-            height: 70px;
-          }
-          /*/////////////////////////////////////secondblock*/
-
-          .secondblock {
-            background-image: url(../img/nlo.png);
-            background-position: center center;
-            background-size: cover;
-            background-repeat: no-repeat;
-            height: 970px;
-            width: 100%;
-          }
-
-          .threedeliveries {
+          .triangle>span {
+            float: none;
+            display: block;
             margin: auto;
-            width: 1100px;
-            height: 676px;
+            padding: 0;
+            margin: 0 -20px;
           }
-
-          .threedeliveriesform {
-            width: 605px;
-            height: 676px;
-            float: left;
-          }
-
-          .threedeliveriesimg {
-            width: 495px;
-            height: 676px;
-            background-image: url(../img/secondbman.png);
-            background-position: center center;
-            background-size: cover;
-            background-repeat: no-repeat;
-            float: left;
-          }
-
-          form {
-            text-align: center;
-            background-color: white;
-            font-size: 21.5px;
-            padding: 13px 45px;
-            border: 1px solid gray;
-          }
-
-          .secondblock input[type="submit"] {
-            width: 365px;
-            height: 65px;
-            border-radius: 10px;
-            background-color: #7680f3;
-          }
-
-          .secondblock input {
-            text-align: center;
-            width: 360px;
-            height: 60px;
-          }
-
-          h2 {
-            font-size: 45px;
+          .triangle {
+            line-height: 2;
+            padding: 0 20px;
             margin: 10px;
           }
-
-          .hat {
-            padding-left: 40px;
+          .triangle::after {
+            border-top: 30px solid rgba(0, 124, 184, 1);
           }
+        }
 
-          .hat p {
-            font-size: 30px;
-            margin: 10px;
+        @media screen and (max-width: 520px) {
+          .sixthblock h2 {
+            font-size: 2.7em;
           }
-          /*////////////////////////////eleventhblock/////////////////////////////*/
-
+          .sixtcontent {
+            margin: 10px 40px;
+          }
           .eleventhblock {
-            text-align: center;
-            padding-bottom: 60px;
+            padding-bottom: 10px;
           }
-
           .eleventhblock h2 {
-            margin: 0;
-            padding: 60px;
+            font-size: 2.7em;
+            padding: 30px;
           }
-
           .eleventhblock div {
-            font-size: 1.5em;
-            color: white;
-            padding-top: 90px;
-            margin: 10px;
-            width: 467px;
-            height: 280px;
-            background-image: url(../img/nlo.png);
-            background-position: center center;
-            background-size: cover;
-            background-repeat: no-repeat;
-            display: inline-block;
+            font-size: 1.3em;
+            padding-top: 50px;
+            margin: 5px;
+            width: 233px;
+            height: 140px;
           }
-
-          @media screen and (max-width: 1050px) {
-            body {
-              font-size: 12px;
-            }
-            header {
-              height: 110px;
-            }
-            .add-header {
-              width: 200px;
-            }
-          }
-
-          @media screen and (max-width: 820px) {
-            header {
-              height: auto;
-              font-size: 1.2em;
-            }
-            header div, header p, .tel {
-              display: block;
-              text-align: center;
-            }
-            body {
-              font-size: 10px;
-            }
-            .add-header {
-              margin: auto;
-              display: block;
-              height: auto;
-              padding-top: 30px;
-            }
-            .add-headers {
-              padding-top: 50px;
-            }
-            .add-header i {
-              font-size: 1em;
-            }
-            .add-header+.add-header {
-              border-left: none;
-            }
-            .triangle>span {
-              float: none;
-              display: block;
-              margin: auto;
-              padding: 0;
-              margin: 0 -20px;
-            }
-            .triangle {
-              line-height: 2;
-              padding: 0 20px;
-              margin: 10px;
-            }
-            .triangle::after {
-              border-top: 30px solid rgba(0, 124, 184, 1);
-            }
-          }
-
-          @media screen and (max-width: 520px) {
-            .eleventhblock {
-              padding-bottom: 10px;
-            }
-            .eleventhblock h2 {
-              font-size: 2.7em;
-              padding: 30px;
-            }
-            .eleventhblock div {
-              font-size: 1.3em;
-              padding-top: 50px;
-              margin: 5px;
-              width: 233px;
-              height: 140px;
-            }
-          }
+        }
