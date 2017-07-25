@@ -258,6 +258,35 @@
           width: 60px;
           border: 1px solid;
         }
+        /*//////////////////////ninthcontent//////////////////////*/
+        /*.ninthcontent::before {
+          content: url(../img/line.png);
+          width: 50px;
+        }
+
+        .ninthcontent::after {
+          content: url(../img/line.png);
+          width: 50px;
+        }*/
+
+        .bb {
+          text-align: right;
+          padding: 90px 0;
+          display: inline-block;
+          width: 30%;
+        }
+
+        .rr {
+          display: inline-block;
+          width: 55%;
+        }
+
+        .ninthcontent {
+          background-image: url(../img/boxline.png);
+          background-position: center center;
+          background-size: contain;
+          background-repeat: no-repeat;
+        }
         /*////////////////////////////eleventhblock/////////////////////////////*/
 
         .eleventhblock {
