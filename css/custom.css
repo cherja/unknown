@@ -284,6 +284,30 @@
           display: inline-block;
         }
 
+        footer {
+          text-align: justify;
+        }
+
+        footer::after {
+          width: 100%;
+          display: inline-block;
+          content: "";
+        }
+
+        footer p, footer div {
+          display: inline-block;
+          vertical-align: top;
+          margin: 0;
+        }
+
+        footer div {
+          margin: 0 50px;
+        }
+
+        footer p {
+          margin: 0 30px;
+        }
+
         @media screen and (max-width: 1050px) {
           body {
             font-size: 12px;
@@ -344,9 +368,21 @@
           .eighthcontentp {
             margin: 10px;
           }
+          footer div, footer p {
+            margin: 0 10px;
+          }
+        }
+
+        @media screen and (max-width: 670px) {
+          footer div p {
+            display: none;
+          }
         }
 
         @media screen and (max-width: 520px) {
+          footer {
+            text-align: center;
+          }
           .sixtcontent {
             margin: 10px 40px;
           }
