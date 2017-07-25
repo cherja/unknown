@@ -191,6 +191,31 @@
             font-size: 30px;
             margin: 10px;
           }
+          /*////////////////////////////eleventhblock/////////////////////////////*/
+
+          .eleventhblock {
+            text-align: center;
+            padding-bottom: 60px;
+          }
+
+          .eleventhblock h2 {
+            margin: 0;
+            padding: 60px;
+          }
+
+          .eleventhblock div {
+            font-size: 1.5em;
+            color: white;
+            padding-top: 90px;
+            margin: 10px;
+            width: 467px;
+            height: 280px;
+            background-image: url(../img/nlo.png);
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: inline-block;
+          }
 
           @media screen and (max-width: 1050px) {
             body {
@@ -245,5 +270,22 @@
             }
             .triangle::after {
               border-top: 30px solid rgba(0, 124, 184, 1);
+            }
+          }
+
+          @media screen and (max-width: 520px) {
+            .eleventhblock {
+              padding-bottom: 10px;
+            }
+            .eleventhblock h2 {
+              font-size: 2.7em;
+              padding: 30px;
+            }
+            .eleventhblock div {
+              font-size: 1.3em;
+              padding-top: 50px;
+              margin: 5px;
+              width: 233px;
+              height: 140px;
             }
           }
