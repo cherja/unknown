@@ -197,6 +197,7 @@
           text-align: center;
           background-color: gray;
           padding-bottom: 60px;
+          color: white;
         }
 
         .chevron {
@@ -208,7 +209,6 @@
         .sixtcontent {
           display: inline-block;
           margin: 30px 100px;
-          color: white;
           font-size: 1.2em;
           vertical-align: top;
         }
@@ -309,8 +309,15 @@
         }
 
         @media screen and (max-width: 1230px) {
+          .circle {
+            width: 140px;
+            height: 140px;
+          }
+          .sixtcontent {
+            margin: 10px 50px;
+          }
           .chevron {
-            display: none;
+            padding-top: 70px;
           }
         }
 
@@ -333,6 +340,12 @@
           header div, header p, .tel {
             display: block;
             text-align: center;
+          }
+          .chevron {
+            transform: rotate(90deg);
+            display: block;
+            padding-top: 0;
+            padding-right: 30px;
           }
           .add-header {
             margin: auto;
