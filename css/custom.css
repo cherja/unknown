@@ -308,6 +308,12 @@
           margin: 0 30px;
         }
 
+        @media screen and (max-width: 1230px) {
+          .chevron {
+            display: none;
+          }
+        }
+
         @media screen and (max-width: 1050px) {
           body {
             font-size: 12px;
@@ -373,6 +379,9 @@
         }
 
         @media screen and (max-width: 520px) {
+          .firstblock {
+            padding-top: 50px;
+          }
           footer {
             text-align: center;
           }
