@@ -446,4 +446,21 @@
             width: 233px;
             height: 140px;
           }
+          .ninthcontent {
+            background-position: 60px;
+          }
+          .bb {
+            text-align: left;
+            padding: 50px 5px;
+            width: 100%;
+          }
+        }
+
+        @media screen and (max-width: 320px) {
+          .bb {
+            padding: 10px 5px;
+          }
+          .ninthcontent {
+            background-size: cover;
+          }
         }
