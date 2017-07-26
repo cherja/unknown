@@ -230,6 +230,49 @@
           margin-bottom: 40px;
           box-shadow: 0 0 0 6px #888, 0 0 0 8px #000;
         }
+        /*/////////////////////seventh////////////////////////////*/
+
+        .seventhblock {
+          padding-top: 70px;
+          text-align: center;
+        }
+
+        .seventhblock span, .seventhblock p {
+          margin: 0;
+          vertical-align: top;
+          display: inline-block;
+        }
+
+        .seventhblock>p {
+          margin-bottom: 20px;
+        }
+
+        .seventhblock span {
+          margin-left: 20px;
+        }
+
+        .tbcll {
+          margin: auto;
+          display: table;
+          text-align: left;
+        }
+
+        .tablecellone {
+          display: table-cell;
+          width: 200px;
+          background-image: url(../img/secondbman.png);
+          background-position: center center;
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+
+        .tablecelltwo {
+          display: table-cell;
+        }
+
+        .sevenlinecontent+.sevenlinecontent {
+          margin-top: 30px;
+        }
         /*?//////////////////////ighthblock/////////////////////////*/
 
         .eighthblock {
@@ -259,15 +302,6 @@
           border: 1px solid;
         }
         /*//////////////////////ninthcontent//////////////////////*/
-        /*.ninthcontent::before {
-          content: url(../img/line.png);
-          width: 50px;
-        }
-
-        .ninthcontent::after {
-          content: url(../img/line.png);
-          width: 50px;
-        }*/
 
         .bb {
           text-align: right;
@@ -421,6 +455,9 @@
         }
 
         @media screen and (max-width: 520px) {
+          .tablecellone {
+            display: none;
+          }
           .firstblock {
             padding-top: 50px;
           }
