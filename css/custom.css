@@ -329,6 +329,29 @@
           display: inline-block;
         }
 
+        .maps {
+          padding: 20px;
+          position: relative;
+        }
+
+        .maps span {
+          color: blue;
+          padding: 10px;
+        }
+
+        .maps p {
+          padding-right: 20px;
+        }
+
+        .mapsadress {
+          color: white;
+          background-color: rgba(0, 0, 0, 0.5);
+          position: absolute;
+          top: 100px;
+          left: 200px;
+          z-index: 1;
+        }
+
         footer {
           text-align: justify;
         }
@@ -498,6 +521,11 @@
         }
 
         @media screen and (max-width: 320px) {
+          .mapsadress {
+            top: 50px;
+            left: 50px;
+            z-index: 1;
+          }
           .threedeliveries form {
             padding: 5px 5px;
           }
