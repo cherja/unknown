@@ -561,16 +561,12 @@
             left: 50px;
             z-index: 1;
           }
-          .threedeliveries form {
+          form {
             padding: 5px 5px;
           }
-          .secondblock input {
-            width: 130px;
-            height: 40px;
-          }
-          .secondblock input[type="submit"] {
+          input {
             width: 180px;
-            height: 45px;
+            height: 30px;
           }
           .bb {
             padding: 10px 5px;
