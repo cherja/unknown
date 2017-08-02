@@ -174,9 +174,13 @@
         input[type="submit"] {
           width: 365px;
           height: 65px;
-          border-radius: 10px;
-          background-color: #7680f3;
+          border-radius: 15px;
+          border-width: 0;
+          background-color: #757ee1;
           cursor: pointer;
+          color: white;
+          box-shadow: 0px 6px 0px 0px rgba(0, 70, 187, 1);
+          font-size: 1.5em;
         }
 
         input {
@@ -530,6 +534,9 @@
         }
 
         @media screen and (max-width: 320px) {
+          h2 {
+            font-size: 2em;
+          }
           .mapsadress {
             top: 50px;
             left: 50px;
