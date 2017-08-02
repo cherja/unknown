@@ -5,17 +5,12 @@
 
         body {
           font-size: 16px;
-          font-weight: 300;
         }
 
         .wrapper {
           max-width: 1920px;
           margin: auto;
           box-shadow: 0 0 20px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        h2 {
-          font-size: 2.5em;
         }
         /*///////////////////////////Header////////////////////////////////////*/
 
@@ -72,7 +67,6 @@
 
         h1 {
           color: white;
-          font-size: 3em;
         }
 
         .triangle {
@@ -158,10 +152,6 @@
           background-position: center center;
           background-size: cover;
           background-repeat: no-repeat;
-        }
-
-        .hat h2 {
-          text-align: left;
         }
 
         form {
@@ -541,6 +531,9 @@
           }
           .eleventhblock {
             padding-bottom: 10px;
+          }
+          h2 {
+            font-size: 2.4em;
           }
           .eleventhblock h2 {
             padding: 30px;
