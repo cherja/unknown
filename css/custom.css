@@ -19,7 +19,7 @@
         }
         /*///////////////////////////Header////////////////////////////////////*/
 
-        header, footer {
+        header {
           max-width: 1170px;
           height: 130px;
           margin: auto;
@@ -27,18 +27,18 @@
           padding: 20px 20px;
         }
 
-        header::after, footer::after {
+        header::after {
           width: 100%;
           display: inline-block;
           content: "";
         }
 
-        header div, header p, footer div, footer p {
+        header div, header p {
           display: inline-block;
           vertical-align: middle;
         }
 
-        header img, footer img {
+        header img {
           vertical-align: middle;
         }
 
@@ -397,6 +397,30 @@
           z-index: 1;
         }
 
+        footer {
+          text-align: justify;
+        }
+
+        footer::after {
+          width: 100%;
+          display: inline-block;
+          content: "";
+        }
+
+        footer p, footer div {
+          display: inline-block;
+          vertical-align: top;
+          margin: 0;
+        }
+
+        footer div {
+          margin: 0 50px;
+        }
+
+        footer p {
+          margin: 0 30px;
+        }
+
         @media screen and (max-width: 1230px) {
           .circle {
             width: 140px;
@@ -414,7 +438,7 @@
           body {
             font-size: 12px;
           }
-          header, footer {
+          header {
             height: 110px;
           }
           .add-header {
@@ -431,10 +455,10 @@
             width: 285px;
             height: 45px;
           }
-          header, footer {
+          header {
             height: auto;
           }
-          header div, header p, footer div, footer p, .tel {
+          header div, header p, .tel {
             display: block;
             text-align: center;
           }
@@ -477,11 +501,17 @@
           .eighthcontentp {
             margin: 10px;
           }
+          footer div, footer p {
+            margin: 0 10px;
+          }
         }
 
         @media screen and (max-width: 670px) {
           .threedeliveries {
             padding: 60px 0;
+          }
+          footer div p {
+            display: none;
           }
           .threedeliveriesimg {
             display: none;
@@ -502,6 +532,9 @@
           }
           .firstblock {
             padding-top: 50px;
+          }
+          footer {
+            text-align: center;
           }
           .sixtcontent {
             margin: 10px 40px;
