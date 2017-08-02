@@ -166,6 +166,7 @@
           height: 65px;
           border-radius: 10px;
           background-color: #7680f3;
+          cursor: pointer;
         }
 
         input {
