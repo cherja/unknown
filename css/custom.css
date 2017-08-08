@@ -43,7 +43,7 @@
         }
 
         .atel {
-          color: deeppink;
+          color: rgb(76, 175, 80);
           text-decoration: none;
           font-size: 1.2em;
           font-weight: bold;
@@ -312,6 +312,10 @@
           width: 55%;
         }
 
+        .ninthcontent h3 {
+          color: rgb(76, 175, 80);
+        }
+
         .ninthcontent {
           background-image: url(../img/boxline.png);
           background-position: center center;
@@ -372,7 +376,7 @@
         }
 
         .twelfthblock a:first-child {
-          color: deeppink;
+          color: rgb(76, 175, 80);
           font-size: 2em;
           text-decoration: none;
           line-height: 2;
