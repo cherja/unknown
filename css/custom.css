@@ -59,7 +59,7 @@
         /*////////////////////////////////////firstblock////////////////////////////////////*/
 
         .firstblock {
-          background-image: url(../img/firstbg.jpg);
+          background-image: url(../img/first.jpg);
           background-position: center center;
           background-size: cover;
           background-repeat: no-repeat;
@@ -133,7 +133,7 @@
         /*/////////////////////////////////////secondblock*/
 
         .secondblock {
-          background-image: url(../img/nlo.png);
+          background-image: url(../img/second.jpg);
           background-position: center center;
           background-size: cover;
           background-repeat: no-repeat;
@@ -154,7 +154,7 @@
         .threedeliveriesimg {
           display: table-cell;
           width: 400px;
-          background-image: url(../img/secondbman.png);
+          background-image: url(../img/secondbman.jpg);
           background-position: center center;
           background-size: cover;
           background-repeat: no-repeat;
@@ -192,7 +192,10 @@
 
         .sixthblock {
           text-align: center;
-          background-color: gray;
+          background-image: url(../img/sixthblock.jpg);
+          background-position: center center;
+          background-size: cover;
+          background-repeat: no-repeat;
           padding-bottom: 60px;
           color: white;
         }
@@ -257,7 +260,7 @@
         .tablecellone {
           display: table-cell;
           width: 200px;
-          background-image: url(../img/secondbman.png);
+          background-image: url(../img/secondbman.jpg);
           background-position: center center;
           background-size: cover;
           background-repeat: no-repeat;
