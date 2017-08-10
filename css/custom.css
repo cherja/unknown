@@ -21,10 +21,10 @@
 
         header, footer {
           max-width: 1170px;
-          height: 130px;
+          height: 90px;
           margin: auto;
           text-align: justify;
-          padding: 20px 20px;
+
         }
 
         header::after, footer::after {
@@ -63,11 +63,11 @@
           background-position: center center;
           background-size: cover;
           background-repeat: no-repeat;
-          height: calc(100vh - 130px);
-          min-height: 700px;
+          height: calc(100vh - 90px);
+          min-height: 530px;
           width: 100%;
           text-align: center;
-          padding-top: 120px;
+          padding-top: 80px;
         }
 
         h1 {
@@ -188,6 +188,18 @@
           width: 360px;
           height: 60px;
         }
+
+/*/////////////////////thirdblock//////////////////////////////*/
+.thirdblock{
+  background-image: url(../img/bg.jpg);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+
+
+
         /*/////////////////////sixth//////////////////////////////////////*/
 
         .sixthblock {
@@ -218,18 +230,30 @@
           padding: 60px 0;
         }
 
+
         .circle {
           margin: auto;
           width: 165px;
           height: 165px;
           border-radius: 50%;
-          background-image: url(../img/secondbman.png);
-          background-position: center center;
+          background-image: url(../img/services.jpg);
+          background-position: leftd center;
           background-size: cover;
           background-repeat: no-repeat;
           margin-bottom: 40px;
           box-shadow: 0 0 0 6px #888, 0 0 0 8px #000;
         }
+        .first {
+          background-position: right  center;
+        }
+        .second {
+          background-position: center center;
+        }
+
+
+
+
+
         /*/////////////////////seventh////////////////////////////*/
 
         .seventhblock {
@@ -278,6 +302,12 @@
         .eighthblock {
           text-align: center;
           padding-top: 70px;
+          background-image: url(../img/eighthblock.jpg);
+          background-position: center center;
+          background-size: cover;
+          background-repeat: no-repeat;
+
+
         }
 
         .eighthblock>p {
@@ -328,7 +358,10 @@
         /*//////////////////////tenthblock/////////////////////////*/
 
         .tenthblock {
-          background-color: gray;
+          background-image: url(../img/tenthblock.jpg);
+          background-position: center center;
+          background-size: contain;
+          background-repeat: no-repeat;
           text-align: center;
         }
 
@@ -343,6 +376,7 @@
         /*////////////////////////////eleventhblock/////////////////////////////*/
 
         .eleventhblock {
+
           text-align: center;
           padding-bottom: 60px;
         }
@@ -357,19 +391,47 @@
           color: white;
           padding-top: 90px;
           margin: 10px;
-          width: 467px;
+          width: 455px;
           height: 280px;
-          background-image: url(../img/nlo.png);
-          background-position: center center;
+          background-image: url(../img/dop.jpg);
           background-size: cover;
           background-repeat: no-repeat;
           display: inline-block;
         }
+
+.firstdop{
+
+  background-position: left  center;
+
+}
+
+.secondop {
+  background-position: -462px 0;
+}
+
+.thirddop
+{
+  background-position: -930px 0;
+}
+
+.fourthdop{
+  background-position: right  center;
+}
+
+
+
+
         /*/////////////////////////twelfthblock//////////////////////////*/
 
         .twelfthblock {
           text-align: center;
-          background-color: lightblue;
+          background-image: url(../img/twelfthblock.jpg);
+          background-position: center center;
+          background-size: cover;
+          background-repeat: no-repeat;
+
+
+
           padding: 40px 0;
           color: white;
         }
@@ -426,7 +488,7 @@
             font-size: 12px;
           }
           header, footer {
-            height: 110px;
+            height: 70px;
           }
           .add-header {
             width: 200px;
@@ -488,6 +550,10 @@
           .eighthcontentp {
             margin: 10px;
           }
+          .firstblock {
+            min-height: 630px;
+
+          }
         }
 
         @media screen and (max-width: 670px) {
@@ -497,6 +563,10 @@
           .threedeliveriesimg {
             display: none;
           }
+          .firstblock {
+            min-height: 700px;
+
+          }
         }
 
         @media screen and (max-width: 520px) {
@@ -504,6 +574,7 @@
             width: 185px;
             height: 35px;
           }
+
           input {
             width: 160px;
             height: 30px;
@@ -527,9 +598,19 @@
             font-size: 1.3em;
             padding-top: 50px;
             margin: 5px;
-            width: 233px;
+            width: 230px;
             height: 140px;
           }
+          .secondop {
+            background-position: -230px 0;
+          }
+
+          .thirddop
+          {
+            background-position: -465px 0;
+          }
+
+
           .ninthcontent {
             background-position: 60px;
           }
@@ -537,6 +618,10 @@
             text-align: left;
             padding: 50px 5px;
             width: 100%;
+          }
+          .firstblock {
+            min-height: 800px;
+
           }
         }
 
