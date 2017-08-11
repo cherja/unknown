@@ -18,41 +18,40 @@
           font-size: 2.5em;
         }
 
+        .buttonmodal {
+          z-index: 5;
+          color: white;
+          position: fixed;
+          right: 50px;
+          top: 100px;
+          width: 110px;
+          height: 90px;
+          border-radius: 10px;
+          font-size: 2em;
+          outline: 0;
+          background-color: rgb(76, 175, 80);
+          opacity: .3;
+        }
 
-            .buttonmodal{
-              z-index:5;
-              color: white;
-              position: fixed;
-              right: 50px;
-            top: 100px;
-              width: 110px;
-              height: 90px;
-              border-radius: 10px;
-              font-size: 2em;
-              outline:0;
-              background-color: rgb(76, 175, 80);
-              opacity: .3;
-            }
-            .buttonmodal:hover{
-              opacity: 1;
-            }
+        .buttonmodal:hover {
+          opacity: 1;
+        }
 
+        .buttonmodal p {
+          margin: 0;
+          padding: 0;
+          font-size: .5em;
+        }
 
-            .buttonmodal p{
-              margin: 0;
-              padding: 0;
-              font-size: .5em;
-            }
-            .modal {
-              width: 500px;
-              margin: auto;
-              text-align: center;
-            }
-            .tingle-modal-box__content{
-              margin: auto;
-            }
+        .modal {
+          width: 500px;
+          margin: auto;
+          text-align: center;
+        }
 
-
+        .tingle-modal-box__content {
+          margin: auto;
+        }
         /*///////////////////////////Header////////////////////////////////////*/
 
         header, footer {
@@ -60,7 +59,6 @@
           height: 90px;
           margin: auto;
           text-align: justify;
-
         }
 
         header::after, footer::after {
@@ -224,56 +222,61 @@
           width: 360px;
           height: 60px;
         }
+        /*/////////////////////thirdblock//////////////////////////////*/
 
-/*/////////////////////thirdblock//////////////////////////////*/
-.thirdblock{
-  color: white;
-  text-align: center;
-  background-image: url(../img/bg.jpg);
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.thirdblock h2{
-  margin: 0;
-}
-.item1, .item2, .item3, .item4, .item5, .item6 {
-  text-align: center;
-  vertical-align: top;
-  width: 300px;
-  display: inline-block;
+        .thirdblock {
+          color: white;
+          text-align: center;
+          background-image: url(../img/bg.jpg);
+          background-position: center center;
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
 
-}
-.items{
-  padding-top: 60px;
-}
-.thirdblock span{
-  width: 100px;
-  height: 100px;
-  background-image: url(../img/sprite.svg);
-  background-repeat: no-repeat;
-  background-size: 600% 100%;
-  display: block;
-  margin: auto;
-}
-.item2 span{
-  background-position: -100px 0;
+        .thirdblock h2 {
+          margin: 0;
+        }
 
+        .item1, .item2, .item3, .item4, .item5, .item6 {
+          text-align: center;
+          vertical-align: top;
+          width: 300px;
+          display: inline-block;
+        }
 
-}
-.item3 span{
-  background-position: -200px 0;
-}
-.item4 span{
-  background-position: -300px 0;
-}
-.item5 span{
-  background-position: -400px 0;
-}
-.item6 span{
-  background-position: -500px 0;
-}
+        .items {
+          padding-top: 60px;
+        }
 
+        .thirdblock span {
+          width: 100px;
+          height: 100px;
+          background-image: url(../img/sprite.svg);
+          background-repeat: no-repeat;
+          background-size: 600% 100%;
+          display: block;
+          margin: auto;
+        }
+
+        .item2 span {
+          background-position: -100px 0;
+        }
+
+        .item3 span {
+          background-position: -200px 0;
+        }
+
+        .item4 span {
+          background-position: -300px 0;
+        }
+
+        .item5 span {
+          background-position: -400px 0;
+        }
+
+        .item6 span {
+          background-position: -500px 0;
+        }
         /*/////////////////////sixth//////////////////////////////////////*/
 
         .sixthblock {
@@ -283,7 +286,6 @@
           background-position: center center;
           background-size: cover;
           background-repeat: no-repeat;
-
           color: white;
         }
 
@@ -305,7 +307,6 @@
           padding: 60px 0;
         }
 
-
         .circle {
           margin: auto;
           width: 165px;
@@ -318,17 +319,14 @@
           margin-bottom: 40px;
           box-shadow: 0 0 0 6px #888, 0 0 0 8px #000;
         }
+
         .first {
-          background-position: right  center;
+          background-position: right center;
         }
+
         .second {
           background-position: center center;
         }
-
-
-
-
-
         /*/////////////////////seventh////////////////////////////*/
 
         .seventhblock {
@@ -381,8 +379,6 @@
           background-position: center center;
           background-size: cover;
           background-repeat: no-repeat;
-
-
         }
 
         .eighthblock>p {
@@ -451,7 +447,6 @@
         /*////////////////////////////eleventhblock/////////////////////////////*/
 
         .eleventhblock {
-
           text-align: center;
           padding-bottom: 60px;
         }
@@ -474,28 +469,21 @@
           display: inline-block;
         }
 
-.firstdop{
+        .firstdop {
+          background-position: left center;
+        }
 
-  background-position: left  center;
+        .secondop {
+          background-position: -462px 0;
+        }
 
-}
+        .thirddop {
+          background-position: -930px 0;
+        }
 
-.secondop {
-  background-position: -462px 0;
-}
-
-.thirddop
-{
-  background-position: -930px 0;
-}
-
-.fourthdop{
-  background-position: right  center;
-}
-
-
-
-
+        .fourthdop {
+          background-position: right center;
+        }
         /*/////////////////////////twelfthblock//////////////////////////*/
 
         .twelfthblock {
@@ -504,9 +492,6 @@
           background-position: center center;
           background-size: cover;
           background-repeat: no-repeat;
-
-
-
           padding: 40px 0;
           color: white;
         }
@@ -627,7 +612,6 @@
           }
           .firstblock {
             min-height: 630px;
-
           }
         }
 
@@ -640,7 +624,6 @@
           }
           .firstblock {
             min-height: 700px;
-
           }
         }
 
@@ -649,7 +632,6 @@
             width: 185px;
             height: 35px;
           }
-
           input {
             width: 160px;
             height: 30px;
@@ -679,13 +661,9 @@
           .secondop {
             background-position: -230px 0;
           }
-
-          .thirddop
-          {
+          .thirddop {
             background-position: -465px 0;
           }
-
-
           .ninthcontent {
             background-position: 60px;
           }
@@ -696,7 +674,6 @@
           }
           .firstblock {
             min-height: 800px;
-
           }
         }
 
