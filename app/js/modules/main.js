@@ -14,7 +14,7 @@ modalContentWrap.parentNode.removeChild(modalContentWrap)
 //  Кнопки открывают окно по клику
 triggers.forEach(function(trigger) {
   trigger.addEventListener('click', function(e) {
-    e.preventDefault();
+    e.preventDefault()
     modal.open()
   })
 })

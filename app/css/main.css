@@ -1,0 +1,702 @@
+* {
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.wrapper {
+  max-width: 1920px;
+  margin: auto;
+  box-shadow: 0 0 20px 15px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+  font-size: 2.5em;
+}
+
+.buttonmodal {
+  z-index: 5;
+  color: white;
+  position: fixed;
+  right: 50px;
+  top: 100px;
+  width: 110px;
+  height: 90px;
+  border-radius: 10px;
+  font-size: 2em;
+  outline: 0;
+  background-color: rgb(76, 175, 80);
+  opacity: .3;
+}
+
+.buttonmodal:hover {
+  opacity: 1;
+}
+
+.buttonmodal p {
+  margin: 0;
+  padding: 0;
+  font-size: .5em;
+}
+
+.modal {
+  width: 500px;
+  margin: auto;
+  text-align: center;
+}
+
+.tingle-modal-box__content {
+  margin: auto;
+}
+/*///////////////////////////Header////////////////////////////////////*/
+
+header, footer {
+  max-width: 1170px;
+  height: 90px;
+  margin: auto;
+  text-align: justify;
+}
+
+header::after, footer::after {
+  width: 100%;
+  display: inline-block;
+  content: "";
+}
+
+header div, header p, footer div, footer p {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+header img, footer img {
+  vertical-align: middle;
+}
+
+.atel {
+  color: rgb(76, 175, 80);
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.adress {
+  text-align: center;
+}
+
+.tel {
+  text-align: right;
+}
+/*////////////////////////////////////firstblock////////////////////////////////////*/
+
+.firstblock {
+  background-image: url(../img/first.jpg);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: calc(100vh - 90px);
+  min-height: 530px;
+  width: 100%;
+  text-align: center;
+  padding-top: 80px;
+}
+
+h1 {
+  color: white;
+  font-size: 3em;
+}
+
+.triangle {
+  margin: auto;
+  display: inline-block;
+  background: rgba(76, 175, 80, 0.5);
+  padding: 20px;
+  position: relative;
+  color: #fff;
+  font-size: 1.5em;
+}
+
+.triangle::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 0;
+  margin: auto;
+  bottom: -60px;
+  border: 30px solid transparent;
+  border-top: 30px solid rgba(76, 175, 80, 0.5);
+}
+
+.triangle>span {
+  background: rgba(76, 175, 80, 1);
+  float: right;
+  padding: 20px;
+  margin: -20px -20px -20px 20px;
+}
+
+.add-headers {
+  text-align: center;
+  padding-top: 100px;
+}
+
+.add-header i {
+  margin: auto;
+  display: block;
+  font-size: 2em;
+}
+
+.add-header+.add-header {
+  border-left: 1.5px solid white;
+}
+
+.add-header {
+  display: inline-block;
+  text-align: center;
+  font-size: 20px;
+  color: white;
+  margin: 0;
+  position: relative;
+  vertical-align: top;
+  width: 300px;
+  height: 70px;
+}
+/*/////////////////////////////////////secondblock*/
+
+.secondblock {
+  background-image: url(../img/second.jpg);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+.threedeliveries {
+  padding: 120px 0;
+  display: table;
+  margin: auto;
+  text-align: center;
+}
+
+.threedeliveriesform {
+  display: table-cell;
+}
+
+.threedeliveriesimg {
+  display: table-cell;
+  width: 400px;
+  background-image: url(../img/secondbman.jpg);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.hat h2 {
+  text-align: left;
+}
+
+form {
+  background-color: white;
+  background-color: white;
+  padding: 13px 45px;
+  border-top: 1px solid gray;
+}
+
+input[type="submit"] {
+  width: 365px;
+  height: 65px;
+  border-radius: 15px;
+  border-width: 0;
+  background: linear-gradient(rgba(76, 175, 80, 0.54), rgb(76, 175, 80));
+  cursor: pointer;
+  color: white;
+  box-shadow: 0 6px 5px 0px rgb(31, 110, 34);
+  font-size: 1.5em;
+}
+
+input {
+  text-align: center;
+  width: 360px;
+  height: 60px;
+}
+/*/////////////////////thirdblock//////////////////////////////*/
+
+.thirdblock {
+  color: white;
+  text-align: center;
+  background-image: url(../img/bg.jpg);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.thirdblock h2 {
+  margin: 0;
+}
+
+.item1, .item2, .item3, .item4, .item5, .item6 {
+  text-align: center;
+  vertical-align: top;
+  width: 300px;
+  display: inline-block;
+}
+
+.items {
+  padding-top: 60px;
+}
+
+.thirdblock span {
+  width: 100px;
+  height: 100px;
+  background-image: url(../img/sprite.svg);
+  background-repeat: no-repeat;
+  background-size: 600% 100%;
+  display: block;
+  margin: auto;
+}
+
+.item2 span {
+  background-position: -100px 0;
+}
+
+.item3 span {
+  background-position: -200px 0;
+}
+
+.item4 span {
+  background-position: -300px 0;
+}
+
+.item5 span {
+  background-position: -400px 0;
+}
+
+.item6 span {
+  background-position: -500px 0;
+}
+/*/////////////////////sixth//////////////////////////////////////*/
+
+.sixthblock {
+  padding: 50px 0;
+  text-align: center;
+  background-image: url(../img/sixthblock.jpg);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+.chevron {
+  color: white;
+  display: inline-block;
+  padding-top: 100px;
+}
+
+.sixtcontent {
+  display: inline-block;
+  margin: 30px 100px;
+  font-size: 1.2em;
+  vertical-align: top;
+}
+
+.sixthblock h2 {
+  margin: 0;
+  padding: 60px 0;
+}
+
+.circle {
+  margin: auto;
+  width: 165px;
+  height: 165px;
+  border-radius: 50%;
+  background-image: url(../img/services.jpg);
+  background-position: leftd center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-bottom: 40px;
+  box-shadow: 0 0 0 6px #888, 0 0 0 8px #000;
+}
+
+.first {
+  background-position: right center;
+}
+
+.second {
+  background-position: center center;
+}
+/*/////////////////////seventh////////////////////////////*/
+
+.seventhblock {
+  padding-top: 70px;
+  text-align: center;
+}
+
+.seventhblock span, .seventhblock p {
+  margin: 0;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.seventhblock>p {
+  margin-bottom: 20px;
+}
+
+.seventhblock span {
+  margin-left: 20px;
+}
+
+.tbcll {
+  margin: auto;
+  display: table;
+  text-align: left;
+}
+
+.tablecellone {
+  display: table-cell;
+  width: 200px;
+  background-image: url(../img/secondbman.jpg);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.tablecelltwo {
+  display: table-cell;
+}
+
+.sevenlinecontent+.sevenlinecontent {
+  margin-top: 30px;
+}
+/*?//////////////////////ighthblock/////////////////////////*/
+
+.eighthblock {
+  text-align: center;
+  padding-top: 70px;
+  background-image: url(../img/eighthblock.jpg);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.eighthblock>p {
+  font-size: 1.2em;
+}
+
+.eighthcontentp {
+  display: inline-block;
+  vertical-align: top;
+  margin: 30px;
+}
+
+.eighthcontentp p:first-child {
+  color: rgb(76, 175, 80);
+  font-size: 1.5em;
+}
+
+.eighthcontentp span {
+  margin: auto;
+  display: block;
+  width: 60px;
+  border: 1px solid;
+}
+/*//////////////////////ninthcontent//////////////////////*/
+
+.bb {
+  text-align: right;
+  padding: 90px 0;
+  display: inline-block;
+  width: 30%;
+}
+
+.rr {
+  display: inline-block;
+  width: 55%;
+}
+
+.ninthcontent h3 {
+  color: rgb(76, 175, 80);
+}
+
+.ninthcontent {
+  background-image: url(../img/boxline.png);
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+/*//////////////////////tenthblock/////////////////////////*/
+
+.tenthblock {
+  background-image: url(../img/tenthblock.jpg);
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  text-align: center;
+}
+
+.tenthblock h2 {
+  margin: 0;
+  padding: 30px 0;
+}
+
+.tenthblock form {
+  display: inline-block;
+}
+/*////////////////////////////eleventhblock/////////////////////////////*/
+
+.eleventhblock {
+  text-align: center;
+  padding-bottom: 60px;
+}
+
+.eleventhblock h2 {
+  margin: 0;
+  padding: 60px;
+}
+
+.eleventhblock div {
+  font-size: 1.5em;
+  color: white;
+  padding-top: 90px;
+  margin: 10px;
+  width: 455px;
+  height: 280px;
+  background-image: url(../img/dop.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: inline-block;
+}
+
+.firstdop {
+  background-position: left center;
+}
+
+.secondop {
+  background-position: -462px 0;
+}
+
+.thirddop {
+  background-position: -930px 0;
+}
+
+.fourthdop {
+  background-position: right center;
+}
+/*/////////////////////////twelfthblock//////////////////////////*/
+
+.twelfthblock {
+  text-align: center;
+  background-image: url(../img/twelfthblock.jpg);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 40px 0;
+  color: white;
+}
+
+.twelfthblock h2, .twelfthblock p {
+  margin: 0;
+}
+
+.twelfthblock a:first-child {
+  color: rgb(76, 175, 80);
+  font-size: 2em;
+  text-decoration: none;
+  line-height: 2;
+}
+/*///////////////////maps///////////////////////*/
+
+.maps {
+  position: relative;
+}
+
+.maps span {
+  color: rgb(76, 175, 80);
+  padding: 10px;
+}
+
+.maps p {
+  padding-right: 20px;
+}
+
+.mapsadress {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 100px;
+  left: 200px;
+  z-index: 1;
+}
+
+@media screen and (max-width: 1230px) {
+  .circle {
+    width: 140px;
+    height: 140px;
+  }
+  .sixtcontent {
+    margin: 10px 50px;
+  }
+  .chevron {
+    padding-top: 70px;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  body {
+    font-size: 12px;
+  }
+  header, footer {
+    height: 70px;
+  }
+  .add-header {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  input {
+    width: 260px;
+    height: 40px;
+  }
+  input[type="submit"] {
+    width: 285px;
+    height: 45px;
+  }
+  header, footer {
+    height: auto;
+  }
+  header div, header p, footer div, footer p, .tel {
+    display: block;
+    text-align: center;
+  }
+  .chevron {
+    transform: rotate(90deg);
+    display: block;
+    padding-top: 0;
+    padding-right: 30px;
+  }
+  .add-header {
+    margin: auto;
+    display: block;
+    height: auto;
+    padding-top: 30px;
+  }
+  .add-headers {
+    padding-top: 50px;
+  }
+  .add-header i {
+    font-size: 1em;
+  }
+  .add-header+.add-header {
+    border-left: none;
+  }
+  .triangle>span {
+    float: none;
+    display: block;
+    margin: auto;
+    padding: 0;
+    margin: 0 -20px;
+  }
+  .triangle {
+    line-height: 2;
+    padding: 0 20px;
+    margin: 10px;
+  }
+  .triangle::after {
+    border-top: 30px solid rgba(0, 124, 184, 1);
+  }
+  .eighthcontentp {
+    margin: 10px;
+  }
+  .firstblock {
+    min-height: 630px;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .threedeliveries {
+    padding: 60px 0;
+  }
+  .threedeliveriesimg {
+    display: none;
+  }
+  .firstblock {
+    min-height: 700px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  input[type="submit"] {
+    width: 185px;
+    height: 35px;
+  }
+  input {
+    width: 160px;
+    height: 30px;
+  }
+  .tablecellone {
+    display: none;
+  }
+  .firstblock {
+    padding-top: 50px;
+  }
+  .sixtcontent {
+    margin: 10px 40px;
+  }
+  .eleventhblock {
+    padding-bottom: 10px;
+  }
+  .eleventhblock h2 {
+    padding: 30px;
+  }
+  .eleventhblock div {
+    font-size: 1.3em;
+    padding-top: 50px;
+    margin: 5px;
+    width: 230px;
+    height: 140px;
+  }
+  .secondop {
+    background-position: -230px 0;
+  }
+  .thirddop {
+    background-position: -465px 0;
+  }
+  .ninthcontent {
+    background-position: 60px;
+  }
+  .bb {
+    text-align: left;
+    padding: 50px 5px;
+    width: 100%;
+  }
+  .firstblock {
+    min-height: 800px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  h2 {
+    font-size: 2em;
+  }
+  .mapsadress {
+    top: 50px;
+    left: 50px;
+    z-index: 1;
+  }
+  form {
+    padding: 5px 5px;
+  }
+  input {
+    width: 180px;
+    height: 30px;
+  }
+  .bb {
+    padding: 10px 5px;
+  }
+  .ninthcontent {
+    background-size: cover;
+  }
+}
