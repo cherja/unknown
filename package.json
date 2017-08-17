@@ -1,6 +1,7 @@
 {
-  "name": "Kurer-Online",
+  "name": "Aist-Post",
   "version": "1.0.0",
+  "description": "Landing Page for Aist Post",
   "devDependencies": {
     "babel-preset-es2015": "^6.24.1",
     "browser-sync": "^2.18.8",
@@ -15,8 +16,9 @@
     "gulp-replace": "^0.6.1",
     "gulp-rigger": "^0.5.8",
     "gulp-stylus": "^2.6.0",
-    "gulp-uglifyjs": "^0.6.2",
+    "gulp-uglify": "^3.0.0",
     "gulp-uncss": "^1.0.6",
+    "imagemin-jpeg-recompress": "^5.1.0",
     "imagemin-pngquant": "^5.0.1"
   }
 }
