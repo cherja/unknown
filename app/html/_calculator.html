@@ -1,0 +1,92 @@
+<div class="remodal" data-remodal-id="modal-calc">
+    <button data-remodal-action="close" class="remodal-close"></button>
+    <div id="calc" v-cloak>
+        <div class="calc__overlay" v-if="overlay" @click="overlay = false"></div>
+        <form action="#" class="calc__form">
+
+            <h2 class="form-calc__price">Стоимость доставки<span v-if="total > 0">: {{ total + 'р.'}}</span></h2>
+            <span class="form-calc__section-title">Маршрут</span>
+            <div class="fifty">
+                <typeahead direction-text="Откуда..." :options="citys" v-model="direction.from.id">
+                </typeahead>
+            </div>
+
+            <div class="fifty" style="margin-left: 5px;">
+                <typeahead direction-text="Куда..." :options="citys" v-model="direction.to.id">
+                </typeahead>
+            </div>
+
+            <span class="form-calc__section-title">Вид отправления</span>
+
+            <input v-model="typeOfLoad" value="docs" type="radio" name="typeOfLoad" id="docs" class="form-calc__radio">
+            <label for="docs" style="margin-right:10px">Документы</label>
+
+            <input v-model="typeOfLoad" value="load" type="radio" name="typeOfLoad" id="load" class="form-calc__radio">
+            <label for="load">Груз</label>
+
+
+            <div class="form-calc__section-load" v-if="typeOfLoad === 'load'">
+                <div v-for="(field, index) in loadFields" :key="field" style="position: relative">
+                    <a v-if="index > 0" href="#" class="form-calc__button-delete" @click.prevent="delPlace(index)">&times;</a>
+                    <div class="fifty" style="vertical-align:top">
+                        <span>Вес, кг</span><br>
+                        <input autofocus type="text" style="margin-bottom: 15px" placeholder="Вес, кг" oninput="this.value = this.value.replace(',', '.')"
+                            @input="add('weight')" v-model.number="field.weight">
+                    </div>
+
+                    <div class="fifty">
+                        <div>
+                            <span>Объем, м³</span>
+                            <a @click.prevent="goCalcO(index)" href="#" style="position: absolute; right: 0; top: 2px">Рассчитать</a>
+
+                            <input type="text" placeholder="Объем, м³" oninput="this.value = this.value.replace(',', '.')" @input="add('o')" v-model.number="field.o"
+                                ref="volume">
+                        </div>
+
+                        <div class="form-calc__window_calc-volume" v-if="field.isCalcO">
+                            <div class="three">
+                                <span>Длина, см</span><br>
+                                <input autofocus type="number" placeholder="Длина, см" oninput="this.value = this.value.replace(',', '.')" v-model.number="field.d">
+                            </div>
+                            <div class="three">
+                                <span>Ширина, см</span><br>
+                                <input type="number" placeholder="Ширина, см" oninput="this.value = this.value.replace(',', '.')" v-model.number="field.s">
+                            </div>
+                            <div class="three">
+                                <span>Высота, см</span>
+                                <br>
+                                <input type="number" placeholder="Высота, см" oninput="this.value = this.value.replace(',', '.')" v-model.number="field.v">
+                            </div>
+                            <div class="three" style="width:17%">
+                                <a @click.prevent="calcO(index)" href="#" class="form-calc__button-save">OK</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fifty">
+                        <span>Стоимость груза, р</span><br>
+                        <input type="text" placeholder="Оценочная стоимость, р" oninput="this.value = this.value.replace(',', '.')" @input="add('price')"
+                            v-model.number="field.price">
+                    </div>
+                </div>
+
+                <div style="text-align: right;">
+                    <button class="form-calc__button-add" @click.prevent="addPlace">+ Добавить место</button>
+                </div>
+            </div>
+            <br>
+            <div class="fifty" style="padding-top:13px"  v-if="typeOfLoad === 'load'">
+                <input v-model="cashPay.active" class="form-calc__checkbox-nal" type="checkbox" id="nal">
+                <label for="nal" class="form-calc__label-nal">Оплата наложенным платежом</label>
+            </div>
+
+            <div v-if="cashPay.active" class="fifty">
+                <span>Сумма, р</span>
+                <input autofocus type="number" style="width: 50%; margin-left: 10px;" oninput="this.value = this.value.replace(',', '.')"
+                    @input="validate" v-model.number="cashPay.sum">
+            </div>
+        </form>
+    </div>
+
+
+</div>

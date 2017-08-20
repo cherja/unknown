@@ -23,26 +23,31 @@ h2 {
   color: white;
   position: fixed;
   right: 50px;
-  top: 100px;
-  width: 110px;
+  width: 90px;
   height: 90px;
   border-radius: 10px;
   font-size: 2em;
   outline: 0;
   background-color: rgb(76, 175, 80);
-  opacity: .3;
+  cursor: pointer;
+  border: none;
 }
 
 .buttonmodal:hover {
-  opacity: 1;
+  background-color: rgb(30, 116, 33);
 }
 
 .buttonmodal p {
   margin: 0;
   padding: 0;
-  font-size: .5em;
+  font-size: .4em;
 }
-
+.buttonmodal.courier {
+  bottom: 300px;
+}
+.buttonmodal.calc {
+  bottom: 180px;
+}
 .modal {
   width: 400px;
   margin: auto;
@@ -53,27 +58,35 @@ h2 {
 .tingle-modal-box__content {
   margin: auto;
 }
+
+
 /*///////////////////////////Header////////////////////////////////////*/
 
-header, footer {
+header,
+footer {
   max-width: 1170px;
   height: 90px;
   margin: auto;
   text-align: justify;
 }
 
-header::after, footer::after {
+header::after,
+footer::after {
   width: 100%;
   display: inline-block;
   content: "";
 }
 
-header div, header p, footer div, footer p {
+header div,
+header p,
+footer div,
+footer p {
   display: inline-block;
   vertical-align: middle;
 }
 
-header img, footer img {
+header img,
+footer img {
   vertical-align: middle;
 }
 
@@ -91,6 +104,8 @@ header img, footer img {
 .tel {
   text-align: right;
 }
+
+
 /*////////////////////////////////////firstblock////////////////////////////////////*/
 
 .firstblock {
@@ -165,6 +180,8 @@ h1 {
   width: 300px;
   height: 70px;
 }
+
+
 /*/////////////////////////////////////secondblock*/
 
 .secondblock {
@@ -201,9 +218,7 @@ h1 {
 
 form {
   background-color: white;
-  background-color: white;
   padding: 13px 45px;
-  border-top: 1px solid gray;
 }
 
 input[type="submit"] {
@@ -211,11 +226,20 @@ input[type="submit"] {
   height: 65px;
   border-radius: 15px;
   border-width: 0;
-  background: linear-gradient(rgba(76, 175, 80, 0.54), rgb(76, 175, 80));
+  background: linear-gradient(rgba(76, 175, 80, 0.7), rgb(76, 175, 80));
   cursor: pointer;
   color: white;
-  box-shadow: 0 6px 5px 0px rgb(31, 110, 34);
+  box-shadow: 0 4px 0 0 rgb(23, 82, 25);
   font-size: 1.5em;
+  position: relative;
+  outline: none;
+}
+input[type="submit"]:hover {
+  background: linear-gradient(rgba(30, 116, 33, 0.7), rgb(30, 116, 33));
+}
+input[type="submit"]:active {
+  box-shadow: none;
+  top: 4px;
 }
 
 input {
@@ -223,6 +247,8 @@ input {
   width: 360px;
   height: 60px;
 }
+
+
 /*/////////////////////thirdblock//////////////////////////////*/
 
 .thirdblock {
@@ -238,7 +264,12 @@ input {
   margin: 0;
 }
 
-.item1, .item2, .item3, .item4, .item5, .item6 {
+.item1,
+.item2,
+.item3,
+.item4,
+.item5,
+.item6 {
   text-align: center;
   vertical-align: top;
   width: 300px;
@@ -278,6 +309,8 @@ input {
 .item6 span {
   background-position: -500px 0;
 }
+
+
 /*/////////////////////sixth//////////////////////////////////////*/
 
 .sixthblock {
@@ -328,6 +361,8 @@ input {
 .second {
   background-position: center center;
 }
+
+
 /*/////////////////////seventh////////////////////////////*/
 
 .seventhblock {
@@ -335,7 +370,8 @@ input {
   text-align: center;
 }
 
-.seventhblock span, .seventhblock p {
+.seventhblock span,
+.seventhblock p {
   margin: 0;
   vertical-align: top;
   display: inline-block;
@@ -371,6 +407,8 @@ input {
 .sevenlinecontent+.sevenlinecontent {
   margin-top: 30px;
 }
+
+
 /*?//////////////////////ighthblock/////////////////////////*/
 
 .eighthblock {
@@ -403,6 +441,8 @@ input {
   width: 60px;
   border: 1px solid;
 }
+
+
 /*//////////////////////ninthcontent//////////////////////*/
 
 .bb {
@@ -427,25 +467,27 @@ input {
   background-size: contain;
   background-repeat: no-repeat;
 }
+
+
 /*//////////////////////tenthblock/////////////////////////*/
 
 .tenthblock {
   padding: 40px 0;
   background-image: url(../img/tenthblock.jpg);
   background-position: center center;
- 
   background-repeat: no-repeat;
   text-align: center;
 }
 
 .tenthblock h2 {
   margin: 0;
-
 }
 
 .tenthblock form {
   display: inline-block;
 }
+
+
 /*////////////////////////////eleventhblock/////////////////////////////*/
 
 .eleventhblock {
@@ -486,6 +528,8 @@ input {
 .fourthdop {
   background-position: right center;
 }
+
+
 /*/////////////////////////twelfthblock//////////////////////////*/
 
 .twelfthblock {
@@ -498,7 +542,8 @@ input {
   color: white;
 }
 
-.twelfthblock h2, .twelfthblock p {
+.twelfthblock h2,
+.twelfthblock p {
   margin: 0;
 }
 
@@ -508,6 +553,8 @@ input {
   text-decoration: none;
   line-height: 2;
 }
+
+
 /*///////////////////maps///////////////////////*/
 
 .maps {
@@ -549,7 +596,8 @@ input {
   body {
     font-size: 12px;
   }
-  header, footer {
+  header,
+  footer {
     height: 70px;
   }
   .add-header {
@@ -561,7 +609,6 @@ input {
   .modal {
     width: 300px;
     padding: 0;
-  
   }
   input {
     width: 260px;
@@ -571,10 +618,15 @@ input {
     width: 285px;
     height: 45px;
   }
-  header, footer {
+  header,
+  footer {
     height: auto;
   }
-  header div, header p, footer div, footer p, .tel {
+  header div,
+  header p,
+  footer div,
+  footer p,
+  .tel {
     display: block;
     text-align: center;
   }
@@ -614,8 +666,6 @@ input {
   .triangle::after {
     border-top: 30px solid rgba(76, 175, 80, 1);
   }
- 
-
   .eighthcontentp {
     margin: 10px;
   }
@@ -715,4 +765,328 @@ input {
   .ninthcontent {
     background-size: cover;
   }
+}
+
+
+/*  Helpers */
+
+.sticky {
+  position: fixed;
+  z-index: 101;
+}
+
+.stop {
+  position: relative;
+  z-index: 101;
+}
+
+.fifty {
+  width: 49%;
+  display: inline-block;
+  vertical-align: middle;
+  min-height: 46px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.novalid {
+  border: 2px solid red !important;
+}
+
+.no_search {
+  display: block;
+  text-align: center;
+  padding: 10px 0 15px 0;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+.three {
+  width: 26%;
+  display: inline-block;
+  vertical-align: bottom;
+  box-sizing: border-box;
+}
+
+.three>span {
+  font-size: 12px;
+}
+
+#calc * {
+  outline: none;
+}
+
+.calc__DPD-window {
+  font-size: 16px;
+  position: fixed;
+  right: 0;
+  left: 0;
+  margin: auto;
+  top: 30%;
+  width: 280px;
+  display: block;
+  width: 380px;
+  background: #fff;
+  padding: 30px 50px 30px 30px;
+  z-index: 100;
+}
+
+.calc__DPD-window__button-close {
+  position: absolute;
+  right: 15px;
+  top: 8px;
+  font-size: 25px;
+  text-decoration: none;
+  color: gray;
+}
+.calc__form {
+  padding: 0;
+  text-align: left;
+}
+.calc__form input:disabled {
+  opacity: .6;
+}
+.form-calc__price {
+  margin-top: 0;
+}
+.calc__form input {
+  display: inline-block;
+  padding: 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 42px;
+}
+
+.calc__form input:focus {
+  outline: none;
+  border: 2px solid rgba(76, 175, 80, 1);
+}
+
+.form-calc__radio,
+.form-calc__checkbox,
+.form-calc__checkbox-nal {
+  width: 15px!important;
+  height: inherit!important;
+}
+
+.form-calc__checkbox {
+  margin-top: 7px;
+  margin-left: 0 !important;
+}
+
+.form-calc__checkbox+label {
+  font-size: 13px;
+}
+
+.form-calc__checkbox-nal {
+  margin-top: 0;
+}
+
+.form-calc__label-nal {
+  font-size: 16px;
+}
+
+.form-calc__button-delete {
+  position: absolute;
+  color: red;
+  text-decoration: none;
+  right: -25px;
+  font-size: 24px!important;
+  top: 25px;
+}
+
+.form-calc__button-save {
+  display: block;
+  background: rgba(76, 175, 80, 1);
+  text-decoration: none;
+  color: #000;
+  padding: 14px 0;
+  text-align: center;
+  margin-bottom: 2px
+}
+
+.form-calc__button-add,
+.form-calc__button-print {
+  padding: 10px 15px;
+  background: transparent;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.form-calc__button-add:hover,
+.form-calc__button-print:hover {
+  background: rgb(30, 116, 33);
+  color: #fff;
+}
+
+.form-calc__button-print:disabled {
+  opacity: .7;
+}
+
+.form-calc__button-print:disabled:hover {
+  background: #fff;
+  cursor: default;
+}
+
+.form-calc__title {
+  text-align: center;
+}
+
+.form-calc__section-title {
+  display: block;
+  border-left: 3px solid rgba(76, 175, 80, 1);
+  clear: both;
+  padding: 8px 15px;
+  margin: 30px auto 10px;
+  font-size: 18px;
+  position: relative;
+}
+
+.form-calc__section-load {
+  background: rgba(0, 0, 0, .05);
+  margin: 15px -50px;
+  padding: 20px 50px;
+}
+
+.form-calc__section-load .fifty {
+  vertical-align: top;
+  width: 176px;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.form-calc__section-load .fifty:last-child {
+  margin-right: 0;
+}
+
+.form-calc__section-load a {
+  font-size: 12px;
+}
+
+.form-calc__window_calc-volume {
+  position: absolute;
+  top: -100px;
+  width: 360px;
+  left: -90px;
+  background: #fff;
+  padding: 15px;
+  z-index: 3;
+}
+
+.form-calc__window_calc-volume::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  bottom: -24px;
+  border: 12px solid;
+  border-color: #fff transparent transparent transparent;
+  left: 165px;
+  z-index: 3;
+}
+
+.calc__overlay {
+  z-index: 2;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .2);
+  top: 0;
+  left: 0;
+}
+
+.typeahead~* {
+  position: relative;
+  top: 45px;
+  margin-bottom: 40px;
+}
+
+.typeahead {
+  border: 1px solid #aaa;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  font-size: 14px;
+  background: #fff;
+}
+
+.typeahead__open {
+  border: 1px solid rgba(76, 175, 80, 1);
+}
+
+.typeahead__open .typeahead__text {
+  opacity: 0;
+}
+
+.typeahead__toggle {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 42px;
+}
+
+.typeahead__search {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 16px;
+  padding: 12px 15px;
+  height: 42px;
+  width: 100%;
+  display: block;
+  cursor: text;
+  background: transparent;
+  border: none;
+  outline: none;
+  z-index: 2;
+  box-sizing: border-box;
+  opacity: 0;
+  text-align: left;
+}
+
+.typeahead__search:focus {
+  border: none!important;
+  opacity: 1;
+}
+
+.typeahead__text {
+  height: 42px;
+  font-size: 16px;
+  padding: 12px 15px;
+  display: inline-block;
+  position: relative;
+  z-index: 3;
+  box-sizing: border-box;
+}
+
+.typeahead__list {
+  margin: 0;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: scroll;
+}
+
+.typeahead__item {
+  display: block;
+  border-top: 1px solid #f4f4f4;
+}
+
+.typeahead__link {
+  display: block;
+  padding: 10px;
+  line-height: 1em;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.typeahead__link:hover,
+.typeahead__active {
+  background: rgba(76, 175, 80, 1);
+  color: #fff;
 }

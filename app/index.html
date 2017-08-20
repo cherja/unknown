@@ -53,20 +53,23 @@
             <div class="logo"><img src="img/logo.svg" alt="Логотип"></div>
             <p>Экспресс-доставка грузов<br>по Москве и МО<br><strong>Работаем с 2011 года</strong></p>
             <p class="adress">г.Москва, м.Сокол,ул. Часовая д 23.а<br>Время раюоты офиса Пн-Пт с 10:00 до 19:00</p>
-            <p class="tel"><a class="atel" href="tel: +74955323369"><img src="icons/telephone.svg"> +7 (495) 532-33-66</a><br><a class="openRegForm"
-                    href="#">Заказать звонок менеджера</a></p>
+            <p class="tel">
+                <a class="atel" href="tel: +74955323369">
+                    <i class="fa fa-phone-square"></i>
+                    +7 (495) 532-33-66
+                </a><br>
+                <a data-remodal-target="modal-cb" href="#">Заказать звонок менеджера</a>
+            </p>
         </header>
-        <div><button class="buttonmodal openRegForm"><i class="fa fa-truck" aria-hidden="true"></i><p>вызвать курьера</p></button></div>
-        <div
-            id="modal">
-            <form method="post" class="modal">
-                <p>Заполните форму и в течении 7 минут Вам перезвонит наш менеджер</p>
-                <p><label for="name" class="label">Ваше имя</label><br><input type="text" name="name" id="name"></p>
-                <p><label for="tel" class="label">Контактный телефон</label><br><input type="tel" name="phone_number" id="tel"
-                        placeholder="+7 (900) 123-45-67"></p>
-                <p class="submitt"><input type="submit" value="Отправить"></p>
-            </form>
-    </div>
+        <button data-remodal-target="modal-cb" class="buttonmodal courier">
+            <i class="fa fa-truck"></i>
+            <p>Вызвать курьера</p>
+        </button>
+        <button data-remodal-target="modal-calc" class="buttonmodal calc">
+            <i class="fa fa-calculator"></i>
+            <p>Рассчитать доставку</p>
+        </button>
+        
     <div class="firstblock">
         <h1>КУРЬЕРСКАЯ СЛУЖБА<br>ДЛЯ ВАШЕГО ИНТЕРНЕТ-МАГАЗИНА</h1>
         <p class="triangle">Доставка «в руки» на следующий день по Москве и МО <span>от 149р.</span></p>
@@ -124,7 +127,7 @@
         </div>
     </div>
     <div class="sixthblock">
-        <!-- <h2>Работаете через поставщиков?</h2> -->
+        <h2>Работаете через поставщиков?</h2>
         <div class="sixtcontent">
             <div class="circle first"></div>
             <p>Заберем у поставщиков</p>
@@ -223,7 +226,9 @@
     <div class="twelfthblock">
         <h2>Нужно срочно с нвми связаться?</h2>
         <p>Звоните по телефону:</p>
-        <p><a href="tel: +74955323369">+7 (495) 532-33-66</a><br>или <a href="#">Заказать звонок менеджера</a></p>
+        <p><a href="tel: +74955323369">+7 (495) 532-33-66</a><br>или 
+            <a href="#" data-remodal-target="modal-cb">Заказать звонок менеджера</a>
+        </p>
     </div>
     <div class="maps">
         <div class="mapsadress">
@@ -236,19 +241,127 @@
         <div class="logo"><img src="img/logo.svg" alt="Логотип"></div>
         <p>Экспресс-доставка грузов<br>по Москве и МО<br><strong>Работаем с 2011 года</strong></p>
         <p class="adress">г.Москва, м.Сокол,ул. Часовая д 23.а<br>Время раюоты офиса Пн-Пт с 10:00 до 19:00</p>
-        <p class="tel"><a class="atel" href="tel: +74955323369"><img src="icons/telephone.svg"> +7 (495) 532-33-66</a><br><a class="openRegForm"
-                href="#">Заказать звонок менеджера</a></p>
+        <p class="tel">
+            <a class="atel" href="tel: +74955323369">
+                <i class="fa fa-phone-square"></i>
+                +7 (495) 532-33-66
+            </a><br>
+            <a data-remodal-target="modal-cb" href="#">Заказать звонок менеджера</a>
+        </p>
     </footer>
     </div>
+<div class="remodal" data-remodal-id="modal-calc">
+    <button data-remodal-action="close" class="remodal-close"></button>
+    <div id="calc" v-cloak>
+        <div class="calc__overlay" v-if="overlay" @click="overlay = false"></div>
+        <form action="#" class="calc__form">
+
+            <h2 class="form-calc__price">Стоимость доставки<span v-if="total > 0">: {{ total + 'р.'}}</span></h2>
+            <span class="form-calc__section-title">Маршрут</span>
+            <div class="fifty">
+                <typeahead direction-text="Откуда..." :options="citys" v-model="direction.from.id">
+                </typeahead>
+            </div>
+
+            <div class="fifty" style="margin-left: 5px;">
+                <typeahead direction-text="Куда..." :options="citys" v-model="direction.to.id">
+                </typeahead>
+            </div>
+
+            <span class="form-calc__section-title">Вид отправления</span>
+
+            <input v-model="typeOfLoad" value="docs" type="radio" name="typeOfLoad" id="docs" class="form-calc__radio">
+            <label for="docs" style="margin-right:10px">Документы</label>
+
+            <input v-model="typeOfLoad" value="load" type="radio" name="typeOfLoad" id="load" class="form-calc__radio">
+            <label for="load">Груз</label>
+
+
+            <div class="form-calc__section-load" v-if="typeOfLoad === 'load'">
+                <div v-for="(field, index) in loadFields" :key="field" style="position: relative">
+                    <a v-if="index > 0" href="#" class="form-calc__button-delete" @click.prevent="delPlace(index)">&times;</a>
+                    <div class="fifty" style="vertical-align:top">
+                        <span>Вес, кг</span><br>
+                        <input autofocus type="text" style="margin-bottom: 15px" placeholder="Вес, кг" oninput="this.value = this.value.replace(',', '.')"
+                            @input="add('weight')" v-model.number="field.weight">
+                    </div>
+
+                    <div class="fifty">
+                        <div>
+                            <span>Объем, м³</span>
+                            <a @click.prevent="goCalcO(index)" href="#" style="position: absolute; right: 0; top: 2px">Рассчитать</a>
+
+                            <input type="text" placeholder="Объем, м³" oninput="this.value = this.value.replace(',', '.')" @input="add('o')" v-model.number="field.o"
+                                ref="volume">
+                        </div>
+
+                        <div class="form-calc__window_calc-volume" v-if="field.isCalcO">
+                            <div class="three">
+                                <span>Длина, см</span><br>
+                                <input autofocus type="number" placeholder="Длина, см" oninput="this.value = this.value.replace(',', '.')" v-model.number="field.d">
+                            </div>
+                            <div class="three">
+                                <span>Ширина, см</span><br>
+                                <input type="number" placeholder="Ширина, см" oninput="this.value = this.value.replace(',', '.')" v-model.number="field.s">
+                            </div>
+                            <div class="three">
+                                <span>Высота, см</span>
+                                <br>
+                                <input type="number" placeholder="Высота, см" oninput="this.value = this.value.replace(',', '.')" v-model.number="field.v">
+                            </div>
+                            <div class="three" style="width:17%">
+                                <a @click.prevent="calcO(index)" href="#" class="form-calc__button-save">OK</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fifty">
+                        <span>Стоимость груза, р</span><br>
+                        <input type="text" placeholder="Оценочная стоимость, р" oninput="this.value = this.value.replace(',', '.')" @input="add('price')"
+                            v-model.number="field.price">
+                    </div>
+                </div>
+
+                <div style="text-align: right;">
+                    <button class="form-calc__button-add" @click.prevent="addPlace">+ Добавить место</button>
+                </div>
+            </div>
+            <br>
+            <div class="fifty" style="padding-top:13px"  v-if="typeOfLoad === 'load'">
+                <input v-model="cashPay.active" class="form-calc__checkbox-nal" type="checkbox" id="nal">
+                <label for="nal" class="form-calc__label-nal">Оплата наложенным платежом</label>
+            </div>
+
+            <div v-if="cashPay.active" class="fifty">
+                <span>Сумма, р</span>
+                <input autofocus type="number" style="width: 50%; margin-left: 10px;" oninput="this.value = this.value.replace(',', '.')"
+                    @input="validate" v-model.number="cashPay.sum">
+            </div>
+        </form>
+    </div>
+
+
+</div>
+<div class="remodal" data-remodal-id="modal-cb">
+    <button data-remodal-action="close" class="remodal-close"></button>
+    <form method="post" class="modal">
+        <p>Заполните форму и в течении 7 минут Вам перезвонит наш менеджер</p>
+        <p><label for="name" class="label">Ваше имя</label><br><input type="text" name="name" id="name"></p>
+        <p><label for="tel" class="label">Контактный телефон</label><br><input type="tel" name="phone_number" id="tel" placeholder="+7 (900) 123-45-67"></p>
+        <p class="submitt"><input type="submit" value="Отправить"></p>
+    </form>
+</div>
 <script src="https://use.fontawesome.com/6554f16cff.js"></script>  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="./js/vendor.js?v={ver}"></script>
 <script src="./js/main.js?v={ver}"></script>
-<!-- BEGIN JIVOSITE CODE {literal} -->
-<script type='text/javascript'>
+
+<!-- <script type='text/javascript'>
 (function(){ var widget_id = 'BjMhIq9dMV';var d=document;var w=window;function l(){
-var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);}if(d.readyState=='complete'){l();}else{if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();</script>
-<!-- {/literal} END JIVOSITE CODE -->
-<script type="text/javascript" > (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter45617577 = new Ya.Metrika({ id:45617577, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/45617577" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
+var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);}if(d.readyState=='complete'){l();}else{if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script> -->
+
+<!-- <script type="text/javascript" > (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter45617577 = new Ya.Metrika({ id:45617577, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/45617577" style="position:absolute; left:-9999px;" alt="" /></div></noscript> -->
 </body>
 
 </html>
