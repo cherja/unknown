@@ -43,10 +43,10 @@ h2 {
   font-size: .4em;
 }
 .buttonmodal.courier {
-  bottom: 300px;
+  bottom: 200px;
 }
 .buttonmodal.calc {
-  bottom: 180px;
+  bottom: 100px;
 }
 .modal {
   width: 400px;
@@ -450,9 +450,7 @@ input {
 
 
 /*//////////////////////ninthcontent//////////////////////*/
-.ninthblock {
-  padding: 50px 0;
-}
+
 .bb {
   text-align: right;
   padding: 120px 0;
@@ -619,6 +617,19 @@ input {
 }
 
 @media screen and (max-width: 840px) {
+  .mapsadress {
+    
+    top: 100px;
+    left: 80px;
+   
+  }
+
+  .buttonmodal {
+    right: 20px;
+    width: 80px;
+    height: 80px;
+    font-size: 1.8em;  
+  }
   .threedeliveriesimg {
     width: 340px;
   }
@@ -682,6 +693,9 @@ input {
   .triangle::after {
     border-top: 30px solid rgb(76, 175, 79);
   }
+  .thirdblock .triangle::after {
+    border-top: 30px solid rgba(76, 175, 80, 0.5);
+  }
   .eighthcontentp {
     margin: 10px;
   }
@@ -691,6 +705,13 @@ input {
 }
 
 @media screen and (max-width: 670px) {
+  .buttonmodal {
+    right: 10px;
+    width: 70px;
+    height: 70px;
+    font-size: 1.5em;  
+  }
+ 
   .modal {
     width: 230px;
   }
@@ -709,9 +730,22 @@ input {
   .firstblock {
     min-height: 700px;
   }
+  .ninthcontent {
+    background-position: 60px;
+  }
+  .bb{
+    width: 40%;
+  }
+  
 }
 
 @media screen and (max-width: 520px) {
+  .mapsadress {
+   
+    top: 200px;
+    left: 10px;
+   
+  }
   input[type="submit"] {
     font-size: 1em;
     width: 195px;
@@ -763,9 +797,13 @@ input {
   .firstblock {
     min-height: 790px;
   }
+  .ninthcontent {
+    background-position: 20px;
+    background-size: cover;
+  }
 }
 
-@media screen and (max-width: 320px) {
+/* @media screen and (max-width: 320px) {
 
   h2 {
     font-size: 2em;
@@ -788,7 +826,7 @@ input {
   .ninthcontent {
     background-size: cover;
   }
-}
+} */
 
 
 /*  Helpers */
