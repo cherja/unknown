@@ -503,6 +503,8 @@ input {
 .eleventhblock {
   text-align: center;
   padding: 50px 0;
+  max-width: 1430px;
+  margin: auto;
 }
 
 .eleventhblock h2 {
@@ -616,7 +618,10 @@ input {
   }
 }
 
-@media screen and (max-width: 820px) {
+@media screen and (max-width: 840px) {
+  .threedeliveriesimg {
+    width: 340px;
+  }
   .modal {
     width: 300px;
     padding: 0;
@@ -698,6 +703,9 @@ input {
   .threedeliveriesimg {
     display: none;
   }
+  
+}
+@media screen and (max-width: 640px) {
   .firstblock {
     min-height: 700px;
   }
@@ -749,12 +757,16 @@ input {
     padding: 50px 5px;
     width: 100%;
   }
+  
+}
+@media screen and (max-width: 405px) {
   .firstblock {
-    min-height: 800px;
+    min-height: 790px;
   }
 }
 
 @media screen and (max-width: 320px) {
+
   h2 {
     font-size: 2em;
   }
