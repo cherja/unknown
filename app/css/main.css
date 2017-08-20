@@ -193,7 +193,7 @@ h1 {
 }
 
 .threedeliveries {
-  padding: 120px 0;
+  padding: 50px 0;
   display: table;
   margin: auto;
   text-align: center;
@@ -213,7 +213,7 @@ h1 {
 }
 
 .hat h2 {
-  text-align: left;
+  margin: 0 auto;
 }
 
 form {
@@ -258,10 +258,11 @@ input {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+  padding: 50px 0;
 }
 
 .thirdblock h2 {
-  margin: 0;
+  margin: 0 auto 30px;
 }
 
 .item1,
@@ -337,8 +338,7 @@ input {
 }
 
 .sixthblock h2 {
-  margin: 0;
-  padding: 60px 0;
+  margin: 0 auto 30px;
 }
 
 .circle {
@@ -351,7 +351,7 @@ input {
   background-size: cover;
   background-repeat: no-repeat;
   margin-bottom: 40px;
-  box-shadow: 0 0 0 6px #888, 0 0 0 8px #000;
+  border: 5px solid rgb(76, 175, 80);
 }
 
 .first {
@@ -366,8 +366,11 @@ input {
 /*/////////////////////seventh////////////////////////////*/
 
 .seventhblock {
-  padding-top: 70px;
+  padding: 50px 0;
   text-align: center;
+}
+.seventhblock h2 {
+  margin: 0 auto 30px;
 }
 
 .seventhblock span,
@@ -413,11 +416,14 @@ input {
 
 .eighthblock {
   text-align: center;
-  padding-top: 70px;
+  padding: 50px 0;
   background-image: url(../img/eighthblock.jpg);
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+}
+.eighthblock h2 {
+  margin: 0 auto 30px;
 }
 
 .eighthblock>p {
@@ -427,7 +433,7 @@ input {
 .eighthcontentp {
   display: inline-block;
   vertical-align: top;
-  margin: 30px;
+  margin: 0 30px;
 }
 
 .eighthcontentp p:first-child {
@@ -444,12 +450,15 @@ input {
 
 
 /*//////////////////////ninthcontent//////////////////////*/
-
+.ninthblock {
+  padding: 50px 0;
+}
 .bb {
   text-align: right;
-  padding: 90px 0;
+  padding: 120px 0;
   display: inline-block;
   width: 30%;
+  font-size: 1.5em
 }
 
 .rr {
@@ -472,7 +481,7 @@ input {
 /*//////////////////////tenthblock/////////////////////////*/
 
 .tenthblock {
-  padding: 40px 0;
+  padding: 50px 0;
   background-image: url(../img/tenthblock.jpg);
   background-position: center center;
   background-repeat: no-repeat;
@@ -480,7 +489,8 @@ input {
 }
 
 .tenthblock h2 {
-  margin: 0;
+  margin: 0 auto 30px;
+  color: #fff;
 }
 
 .tenthblock form {
@@ -492,12 +502,11 @@ input {
 
 .eleventhblock {
   text-align: center;
-  padding-bottom: 60px;
+  padding: 50px 0;
 }
 
 .eleventhblock h2 {
-  margin: 0;
-  padding: 60px;
+  margin: 0 auto 30px;
 }
 
 .eleventhblock div {
@@ -538,15 +547,17 @@ input {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-  padding: 40px 0;
+  padding: 50px 0;
   color: white;
 }
 
 .twelfthblock h2,
 .twelfthblock p {
-  margin: 0;
+  margin: 0 auto 10px;
 }
-
+.twelfthblock a {
+  color: #fff;
+}
 .twelfthblock a:first-child {
   color: rgb(76, 175, 80);
   font-size: 2em;
@@ -664,7 +675,7 @@ input {
     margin: 10px;
   }
   .triangle::after {
-    border-top: 30px solid rgba(76, 175, 80, 1);
+    border-top: 30px solid rgb(76, 175, 79);
   }
   .eighthcontentp {
     margin: 10px;
