@@ -22,9 +22,9 @@ h2 {
   z-index: 5;
   color: white;
   position: fixed;
-  right: 50px;
-  width: 90px;
-  height: 90px;
+  right: 10px;
+  width: 80px;
+  height: 80px;
   border-radius: 10px;
   font-size: 2em;
   outline: 0;
@@ -58,6 +58,29 @@ h2 {
 .tingle-modal-box__content {
   margin: auto;
 }
+
+ 
+.bottbuttons{
+  display: none;
+  position: fixed;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 2;
+  
+}
+.bottbutton{
+  background-color: rgb(76, 175, 80);
+  color: white;
+  font-size: 1em;
+  outline: 0;
+  cursor: pointer;
+  border: none;
+}
+
+
+
 
 
 /*///////////////////////////Header////////////////////////////////////*/
@@ -262,6 +285,7 @@ input {
 }
 
 .thirdblock h2 {
+  padding: 0 85px;
   margin: 0 auto 30px;
 }
 
@@ -617,9 +641,26 @@ input {
   .add-header {
     width: 200px;
   }
+  .buttonmodal{
+    display: none;
+  }
+  .bottbuttons{
+       display: block;
+   }
+   footer{
+    padding-bottom: 100px;
+  }
 }
 
 @media screen and (max-width: 840px) {
+  .thirdblock h2 {
+    padding: 0 0;
+   
+  }
+  footer{
+    padding-bottom: 40px;
+  }
+  
   .mapsadress {
     
     top: 100px;
@@ -627,12 +668,7 @@ input {
    
   }
 
-  .buttonmodal {
-    right: 20px;
-    width: 80px;
-    height: 80px;
-    font-size: 1.8em;  
-  }
+ 
   .threedeliveriesimg {
     width: 340px;
   }
@@ -708,12 +744,7 @@ input {
 }
 
 @media screen and (max-width: 670px) {
-  .buttonmodal {
-    right: 10px;
-    width: 70px;
-    height: 70px;
-    font-size: 1.5em;  
-  }
+ 
  
   .modal {
     width: 230px;
