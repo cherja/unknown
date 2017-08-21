@@ -328,6 +328,7 @@ input {
   color: white;
   display: inline-block;
   padding-top: 100px;
+  font-size: 2em;
 }
 
 .sixtcontent {
@@ -396,13 +397,15 @@ input {
 
 .tablecellone {
   display: table-cell;
-  width: 200px;
+  width: 50%;
   background-image: url(../img/secondbman.jpg);
-  background-position: center center;
+  background-position: top center;
   background-size: cover;
   background-repeat: no-repeat;
 }
-
+.ninthblock {
+  padding: 50px 0;
+}
 .tablecelltwo {
   display: table-cell;
 }
