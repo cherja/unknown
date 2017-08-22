@@ -93,9 +93,10 @@
                 <form class="callback_form">
                     <p>Заполните форму <span>и в течении 7 минут</span> Вам перезвонит<br>наш менеджер и задаст уточняющие запросы<br>для
                         получения Вами пробных доставок</p>
-                    <p><label for="name" class="label">Ваше имя</label><br><input type="text" name="name" class="name"></p>
-                    <p><label for="tel" class="label">Контактный телефон</label><br><input type="tel" name="phone_number" class="tel"
-                            placeholder="+7 (900) 123-45-67"></p>
+                    <p><label  class="label">Ваше имя<br><input type="text" name="name" class="name">
+                        </label></p>
+                    <p><label  class="label">Контактный телефон<br><input type="tel" name="phone_number" class="tell"
+                        placeholder="+7 (900) 123-45-67"></label></p>
                     <p class="submitt"><input type="submit" value="получить 3 пробные доставки"></p>
                     <p>3 пробные доставки закрепляются<br>за введенным номером телефоном</p>
                 </form>
@@ -204,8 +205,19 @@
         <form class="callback_form">
             <p><strong>Оставьте заявку и узнайте,</strong><br><span>как сократить расходы на доставку</span><br>благодаря нашим
                 пакетным предложениям!</p>
-            <p><label for="name" class="label">Ваше имя</label><br><input type="text" name="name" class="name"></p>
-            <p><label for="tel" class="label">Контактный телефон</label><br><input type="tel" name="phone_number" class="tel" placeholder="+7 (900) 123-45-67"></p>
+            <p>
+                <label  class="label">
+                    Ваше имя<br>
+                    <input type="text" name="name" class="name">
+                </label>
+            </p>
+
+            <p>
+                <label  class="label">
+                    Контактный телефон<br>
+                    <input type="tel" name="phone_number" class="tell" placeholder="+7 (900) 123-45-67">
+                </label>
+            </p>
             <p
                 class="submitt"><input type="submit" value="Оставить заявку"></p>
                 <p>В течении 7 минут вам перезвонит наш менеджер и<br>проинформирует, как Вы можете снизит расходы<br>благодаря
@@ -350,14 +362,26 @@
     <button data-remodal-action="close" class="remodal-close"></button>
     <form class="modal callback_form">
         <p>Заполните форму и в течении 7 минут Вам перезвонит наш менеджер</p>
+
+
         <p>
             <label class="label">
                 Ваше имя<br>
                 <input type="text" name="name" class="name">
             </label>
         </p>
-        <p><label for="tel" class="label">Контактный телефон</label><br><input type="tel" name="phone_number" class="tel" placeholder="+7 (900) 123-45-67"></p>
-        <p class="submitt"><input type="submit" value="Отправить"></p>
+
+
+        <p>
+            <label class="label">
+                Контактный телефон<br>
+                <input type="tel" name="phone_number" class="tell" placeholder="+7 (900) 123-45-67">
+            </label>
+        </p>
+
+
+        <p class="submitt"><input type="submit" value="Отправить">
+        </p>
     </form>
 </div>
 <script src="https://use.fontawesome.com/6554f16cff.js"></script>  
