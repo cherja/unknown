@@ -1,5 +1,6 @@
 (() => {
 //= calculator.js
+//= form.js
 })()
 
 
