@@ -64,14 +64,7 @@ sup {
   margin: auto;
 }
 
-.fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  z-index: 2;
-} 
+
 
 .bottbutton{
   background-color: rgb(76, 175, 80);
@@ -80,8 +73,21 @@ sup {
   outline: 0;
   cursor: pointer;
   border: none;
+  
+}
+.toptbuttons{
+  visibility: hidden;
 }
 
+.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 2;
+  display: block;
+} 
 
 
 
@@ -603,6 +609,9 @@ vertical-align: middle;
 }
 
 @media screen and (max-width: 1050px) {
+  .toptbuttons{
+    visibility:visible;
+  }
   .frame{
     height: 75px;
   }
