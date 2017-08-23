@@ -19,6 +19,10 @@ h2 {
   font-size: 2.5em;
 }
 
+sup {
+  text-decoration: underline;
+}
+
 .buttonmodal {
   z-index: 5;
   color: white;
@@ -119,10 +123,6 @@ footer img {
   text-decoration: none;
   font-size: 1.2em;
   font-weight: bold;
-}
-
-.adress {
-  text-align: center;
 }
 
 .tel {
@@ -439,44 +439,6 @@ input {
   margin-top: 30px;
 }
 
-
-/*?//////////////////////ighthblock/////////////////////////*/
-
-.eighthblock {
-  text-align: center;
-  padding: 50px 0;
-  background-image: url(../img/eighthblock.jpg);
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.eighthblock h2 {
-  margin: 0 auto 30px;
-}
-
-.eighthblock>p {
-  font-size: 1.2em;
-}
-
-.eighthcontentp {
-  display: inline-block;
-  vertical-align: top;
-  margin: 0 30px;
-}
-
-.eighthcontentp p:first-child {
-  color: rgb(76, 175, 80);
-  font-size: 1.5em;
-}
-
-.eighthcontentp span {
-  margin: auto;
-  display: block;
-  width: 60px;
-  border: 1px solid;
-}
-
-
 /*//////////////////////ninthcontent//////////////////////*/
 
 .bb {
@@ -540,10 +502,10 @@ input {
 .eleventhblock div {
   font-size: 1.5em;
   color: white;
-  padding-top: 90px;
+  padding-top: 65px;
   margin: 10px;
-  width: 455px;
-  height: 280px;
+  width: 350px;
+  height: 215px;
   background-image: url(../img/dop.jpg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -555,7 +517,7 @@ input {
 }
 
 .secondop {
-  background-position: -462px 0;
+  background-position: -350px 0;
 }
 
 .thirddop {
@@ -593,30 +555,6 @@ input {
   line-height: 2;
 }
 
-
-/*///////////////////maps///////////////////////*/
-
-.maps {
-  position: relative;
-}
-
-.maps span {
-  color: rgb(76, 175, 80);
-  padding: 10px;
-}
-
-.maps p {
-  padding-right: 20px;
-}
-
-.mapsadress {
-  color: white;
-  background-color: rgba(0, 0, 0, 0.5);
-  position: absolute;
-  top: 100px;
-  left: 200px;
-  z-index: 1;
-}
 
 @media screen and (max-width: 1230px) {
   .circle {
@@ -662,12 +600,6 @@ input {
     padding-bottom: 40px;
   }
   
-  .mapsadress {
-    
-    top: 100px;
-    left: 80px;
-   
-  }
 
  
   .threedeliveriesimg {
@@ -775,12 +707,7 @@ input {
 }
 
 @media screen and (max-width: 520px) {
-  .mapsadress {
-   
-    top: 200px;
-    left: 10px;
-   
-  }
+
   input[type="submit"] {
     font-size: 1em;
     width: 195px;
@@ -842,11 +769,6 @@ input {
 
   h2 {
     font-size: 2em;
-  }
-  .mapsadress {
-    top: 50px;
-    left: 50px;
-    z-index: 1;
   }
   form {
     padding: 5px 5px;
