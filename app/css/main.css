@@ -398,30 +398,18 @@ input {
   margin: 0 auto 30px;
 }
 
-.seventhblock span,
-.seventhblock p {
-  margin: 0;
-  vertical-align: top;
-  display: inline-block;
-}
 
-.seventhblock>p {
-  margin-bottom: 20px;
-}
-
-.seventhblock span {
-  margin-left: 20px;
-}
 
 .tbcll {
   margin: auto;
   display: table;
   text-align: left;
+  max-width: 900px;
 }
 
 .tablecellone {
   display: table-cell;
-  width: 50%;
+  width: 30%;
   background-image: url(../img/secondbman.jpg);
   background-position: top center;
   background-size: cover;
@@ -434,10 +422,35 @@ input {
   display: table-cell;
 }
 
+
+.seventhblock span,
+.seventhblock p {
+  margin: 0;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.seventhblock>p {
+  margin-bottom: 20px;
+}
+
 .sevenlinecontent+.sevenlinecontent {
   margin-top: 30px;
 }
+.sevenlinecontent {
+  display: table;
 
+}
+.sevenlinecontent span {
+  display: table-cell;
+  font-size: 2.3em;
+  padding: 0 20px;
+  color: rgb(76, 175, 80);
+}
+.sevenlinecontent p {
+  display: table-cell;
+  
+}
 /*//////////////////////ninthcontent//////////////////////*/
 
 .bb {
