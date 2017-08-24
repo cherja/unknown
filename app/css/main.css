@@ -37,9 +37,7 @@ sup {
   
 }
 
-.btnb{
-  display: inline-block;
-}
+
 
 
 .buttonmodal:hover {
@@ -79,15 +77,7 @@ sup {
   visibility: hidden;
 }
 
-.fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  z-index: 2;
-  display: block;
-} 
+
 
 
 
@@ -616,7 +606,16 @@ vertical-align: middle;
     height: 75px;
   }
   header{
-    position: static;
+    position: relative;
+  }
+  .frame .btnb{
+  position: absolute;
+  bottom: -100px;
+  display: block;
+  left: 0;
+  width: 100%;
+  text-align: center;
+   
   }
   body {
     font-size: 12px;
@@ -625,19 +624,49 @@ vertical-align: middle;
   .add-header {
     width: 200px;
   } 
-  .frame .btnb {
-    display: none;
-  }
+ 
+  .frame .fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+    display: block;
+  } 
  
  
 }
 
 @media screen and (max-width: 840px) {
+  .frame .btnb{
+    
+    bottom: -60px;
+   
+   
+  }
+  .buttonmodal i{
+    display: none;
+
+  }
+  .buttonmodal {
+    margin: 0;
+    width: auto;
+    height: auto;
+    padding: 10px;
+    font-size: 2.2em;
+
+  }
+
   .thirdblock h2 {
     padding: 0 0;
    
   }
-  
+  .btnb{
+
+    bottom: -100px;
+   
+  }
   .threedeliveriesimg {
     width: 340px;
   }
@@ -797,6 +826,7 @@ vertical-align: middle;
     background-position: 20px;
     background-size: cover;
   }
+  
 }
 
 /* @media screen and (max-width: 320px) {
