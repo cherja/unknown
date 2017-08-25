@@ -97,6 +97,7 @@ header {
   position: fixed;
   background-color: white;
   z-index: 102;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 .frame::after
@@ -404,12 +405,12 @@ input {
   margin: auto;
   display: table;
   text-align: left;
-  max-width: 900px;
+  max-width: 800px;
 }
 
 .tablecellone {
   display: table-cell;
-  width: 30%;
+  width: 40%;
   background-image: url(../img/secondbman.jpg);
   background-position: top center;
   background-size: cover;
@@ -420,6 +421,9 @@ input {
 }
 .tablecelltwo {
   display: table-cell;
+  padding: 0 40px;
+  
+  
 }
 
 
@@ -443,14 +447,16 @@ input {
 }
 .sevenlinecontent span {
   display: table-cell;
-  font-size: 2.3em;
+  font-size: 3em;
   padding: 0 20px;
+  width: 110px;
   color: rgb(76, 175, 80);
-  vertical-align: middle;
+  
 }
 .sevenlinecontent p {
   display: table-cell;
-  vertical-align: middle;
+  
+  font-size: 1.1em;
 }
 /*//////////////////////ninthcontent//////////////////////*/
 
