@@ -488,7 +488,7 @@ input {
 
 .shopsblock{
   text-align: center;
-  
+  padding: 50px 0;
 }
 
 .shops{
@@ -499,20 +499,20 @@ input {
  
 }
 
-
-.shopimg{
-  display: inline-block;
-width:200px;
-height: 200px;
-background-image: url(../img/secondbman.jpg);
-background-position: top center;
-background-size: cover;
-background-repeat: no-repeat;
-vertical-align: middle;
+.shops img{
+  float: left;
+  margin-right: 15px;
+  width:200px;
+  height: 200px;
 }
-.shopcontent{
-  display: inline-block;
-  vertical-align: middle;
+.shops + .shops {
+  margin-top: 20px;
+}
+.shopcontent a:first-of-type {
+  text-decoration: none;
+  color: inherit;
+  font-size: 2em;
+  font-weight: bold;
 }
 
 /*//////////////////////tenthblock/////////////////////////*/
