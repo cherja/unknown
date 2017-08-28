@@ -431,15 +431,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             });
         });
     });
-    var buttonsFix = document.getElementById('toptbuttons');
-
-    var buttonsSourceBottom = buttonsFix.getBoundingClientRect().bottom + window.pageYOffset;
+    var buttonsClassList = document.getElementById('toptbuttons').classList,
+        headerHeight = document.getElementsByTagName('header')[0].offsetHeight,
+        fixedClass = 'fixed';
 
     window.onscroll = function () {
-        if (buttonsFix.classList.contains('fixed') && window.pageYOffset < buttonsSourceBottom) {
-            buttonsFix.classList.remove('fixed');
-        } else if (window.pageYOffset > buttonsSourceBottom) {
-            buttonsFix.classList.add('fixed');
-        }
+        if (window.pageYOffset >= headerHeight) buttonsClassList.add(fixedClass);else if (buttonsClassList.contains(fixedClass)) buttonsClassList.remove(fixedClass);
     };
 })();
