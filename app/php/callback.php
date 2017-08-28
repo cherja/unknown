@@ -17,7 +17,7 @@
   $mysqli->close();
 
   //  Отправка e-mail
-  $to      = 'kurer.online@yandex.ru';
+  $to      = 'kurer.online@gmail.com';
   $subject = 'Заказ звонка';
   $message = $name.' '.$phone;
 
