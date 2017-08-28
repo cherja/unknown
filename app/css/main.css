@@ -661,10 +661,10 @@ input {
 
 @media screen and (max-width: 840px) {
   .frame .btnb{
-    
-    bottom: -60px;
-   
-   
+    bottom: -60px;   
+  }
+  .frame .btnb button{
+    margin: 5px;
   }
   .buttonmodal i{
     display: none;
@@ -791,6 +791,19 @@ input {
 }
 
 @media screen and (max-width: 520px) {
+
+  .shops{
+    text-align: center;  
+    width: auto;
+   
+   
+  }
+  
+  .shops img{
+    float: none;   
+    width:180px;
+    height: 180px;
+  }
 
   input[type="submit"] {
     font-size: 1em;
