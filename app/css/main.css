@@ -85,6 +85,9 @@
 }
 .form-calc__price {
   margin-top: 0;
+  background: #fff;
+  position: sticky;
+  top: 0;
 }
 .calc__form input {
   display: inline-block;
@@ -253,6 +256,7 @@
 
 .typeahead__open {
   border: 1px solid rgba(76, 175, 80, 1);
+  z-index: 4;
 }
 
 .typeahead__open .typeahead__text {
@@ -261,7 +265,7 @@
 
 .typeahead__toggle {
   position: relative;
-  z-index: 1;
+  z-index: 4;
   width: 100%;
   height: 42px;
 }
@@ -305,6 +309,7 @@
   padding: 0;
   max-height: 200px;
   overflow-y: scroll;
+  z-index: 5;
 }
 
 .typeahead__item {
@@ -358,7 +363,7 @@ sup {
   cursor: pointer;
   border: none;
   margin: 0 10px;
-  
+  vertical-align: top;  
 }
 
 
@@ -919,13 +924,15 @@ input {
   margin: 0 auto 10px;
 }
 .twelfthblock a {
-  color: #fff;
-}
-.twelfthblock a:first-child {
   color: rgb(76, 175, 80);
   font-size: 2em;
   text-decoration: none;
-  line-height: 2;
+}
+.twelfthblock a:last-child {
+  color: #fff;
+  font-size: 1em;
+  text-decoration: underline;
+  padding-top: 15px;  
 }
 
 
@@ -997,8 +1004,7 @@ input {
     padding: 10px;
     font-size: 2.2em;
     border-radius: 0;
-    display: inline-block;
-    vertical-align: top;   
+    display: inline-block; 
   }
 
   .thirdblock h2 {
