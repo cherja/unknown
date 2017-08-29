@@ -5,7 +5,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 (function () {
     Vue.component('typeahead', {
 
-        template: '\n        <div :class="typeaheadState" >\n            <div class="typeahead__toggle" ref="toggle" @mousedown.prevent="toggle">\n                <input type="text" class="typeahead__search" ref="search"\n                v-model.trim="search"\n                @focus="onFocus"\n                @blur="onBlur"\n                @keydown.esc="onEscape"\n                @keydown.down="onDownKey"\n                @keydown.up="onUpKey"\n                @keydown.enter="onEnterKey"\n                >\n                <span class="typeahead__text" ref="text">{{displayText}}</span>\n            </div>\n\n            <ul class="typeahead__list" ref="list" v-if="open" @scroll="onScroll">\n                <li class="typeahead__item" v-for="(option, index) in filteredOptions" :key="index">\n                    <a class="typeahead__link" @mousedown.prevent="select(option)"\n                        :class="[selectIndex === index ? \'typeahead__active\':\'\']"\n                        >\n                        {{option.city + " (" + option.region + ")"}}\n                    </a>\n                </li>\n                <li class="no_search" v-if="noSearch">\u0413\u043E\u0440\u043E\u0434 \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D...</li>\n            </ul>\n        </div>\n    ',
+        template: '<div :class="typeaheadState">\n                    <div class="typeahead__toggle" ref="toggle" @mousedown.prevent="toggle">\n                        <input type="text" class="typeahead__search"\n                            ref="search"\n                            v-model.trim="search"\n                            @focus="onFocus"\n                            @blur="onBlur"\n                            @keydown.esc="onEscape"\n                            @keydown.down="onDownKey"\n                            @keydown.up="onUpKey"\n                            @keydown.enter="onEnterKey"\n                        >\n                        <span class="typeahead__text" ref="text">{{displayText}}</span>\n                    </div>\n                    <ul class="typeahead__list" ref="list" v-if="open" @scroll="onScroll">\n                        <li class="typeahead__item" v-for="(option, index) in filteredOptions" :key="index">\n                            <a class="typeahead__link"\n                                @mousedown.prevent="select(option)"\n                                :class="[selectIndex === index ? \'typeahead__active\':\'\']">\n                                {{option.city + " (" + option.region + ")"}}\n                            </a>\n                        </li>\n                        <li class="no_search" v-if="noSearch">\u0413\u043E\u0440\u043E\u0434 \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D...</li>\n                    </ul>\n                    </div>',
         props: {
             options: {
                 type: Array,
@@ -224,6 +224,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         },
 
         computed: {
+            bigDisplay: function bigDisplay() {
+                return document.documentElement.clientWidth >= 660;
+            },
             TZ: function TZ() {
                 return this.direction.from.id > 0 && this.direction.to.id > 0 ? this.tables.TZ[this.direction.to.id - 1][this.direction.from.id - 1] : 0;
             },
@@ -233,73 +236,76 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             total: function total() {
                 var _this = this;
 
-                //  Если выбран тип груза "Документы"
-                if (this.typeOfLoad === 'docs') {
-                    switch (this.TZ) {
-                        case 1:
-                            return 50;break;
-                        case 2:
-                            return 55;break;
-                        case 3:
-                            return 55;break;
-                        case 4:
-                            return 60;break;
-                        case 5:
-                            return 60;break;
-                        case 6:
-                            return 70;break;
-                        case 7:
-                            return 120;break;
+                if (this.TZ > 0) {
+
+                    //  Если выбран тип груза "Документы"
+                    if (this.typeOfLoad === 'docs') {
+                        switch (this.TZ) {
+                            case 1:
+                                return 50;break;
+                            case 2:
+                                return 55;break;
+                            case 3:
+                                return 55;break;
+                            case 4:
+                                return 60;break;
+                            case 5:
+                                return 60;break;
+                            case 6:
+                                return 70;break;
+                            case 7:
+                                return 120;break;
+                        }
                     }
-                }
 
-                //  Если выбран тип груза "Груз"
-                if (this.typeOfLoad === 'load') {
+                    //  Если выбран тип груза "Груз"
+                    if (this.typeOfLoad === 'load') {
 
-                    var tariff = this.tables.tariff[0],
-                        isFixedPrice = true;
+                        var tariff = this.tables.tariff[0],
+                            isFixedPrice = true;
 
-                    //  Выбираем максимальное значение веса между фактическим и объемным весами
-                    var weight = function () {
-                        var volumeWeight = _this.load.o * 250,
-                            factWeight = _this.load.weight,
-                            maxWeight = volumeWeight >= factWeight ? volumeWeight : factWeight;
-                        return _this.round(maxWeight);
-                    }();
+                        //  Выбираем максимальное значение веса между фактическим и объемным весами
+                        var weight = function () {
+                            var volumeWeight = _this.load.o * 250,
+                                factWeight = _this.load.weight,
+                                maxWeight = volumeWeight >= factWeight ? volumeWeight : factWeight;
+                            return _this.round(maxWeight);
+                        }();
 
-                    // Определяем тариф по рассчитанному весу
-                    if (weight > 0) {
-                        tariff = this.tables.tariff.find(function (item, index, array) {
-                            //  Если выбран последний тариф - значит вес > 50 кг и цена уже не фиксированная
-                            if (index + 1 === array.length) isFixedPrice = false;
-                            return weight > item.min && weight <= item.max;
-                        });
+                        // Определяем тариф по рассчитанному весу
+                        if (weight > 0) {
+                            tariff = this.tables.tariff.find(function (item, index, array) {
+                                //  Если выбран последний тариф - значит вес > 50 кг и цена уже не фиксированная
+                                if (index + 1 === array.length) isFixedPrice = false;
+                                return weight > item.min && weight <= item.max;
+                            });
 
-                        var sums = [function () {
-                            var price = tariff.prices[_this.TZ],
-                                totalPrice = isFixedPrice ? price : price[0] + (weight - 50) * price[1];
-                            return _this.round(totalPrice);
-                        }(),
+                            var sums = [function () {
+                                var price = tariff.prices[_this.TZ],
+                                    totalPrice = isFixedPrice ? price : price[0] + (weight - 50) * price[1];
+                                return _this.round(totalPrice);
+                            }(),
 
-                        //  Считаем комиссию от оценочной стоимости
-                        function () {
-                            if (_this.load.price > 0) {
-                                var comissSum = _this.load.price * 0.005;
-                                return _this.round(comissSum > 5 ? comissSum : 5);
-                            } else return 0;
-                        }(),
+                            //  Считаем комиссию от оценочной стоимости
+                            function () {
+                                if (_this.load.price > 0) {
+                                    var comissSum = _this.load.price * 0.005;
+                                    return _this.round(comissSum > 5 ? comissSum : 5);
+                                } else return 0;
+                            }(),
 
-                        //  Считаем наложенный платеж
-                        function () {
-                            var summ = _this.cashPay.sum,
-                                comissNal = _this.round(summ * 0.01);
-                            return _this.cashPay.active ? 50 + comissNal : 0;
-                        }(), tariff.courierPrice];
+                            //  Считаем наложенный платеж
+                            function () {
+                                var summ = _this.cashPay.sum,
+                                    comissNal = _this.round(summ * 0.01);
+                                return _this.cashPay.active ? 50 + comissNal : 0;
+                            }(), tariff.courierPrice];
 
-                        return sums.reduce(function (p, c) {
-                            return p + c;
-                        }, 0);
-                    } else return 0;
+                            return sums.reduce(function (p, c) {
+                                return p + c;
+                            }, 0);
+                        } else return 0;
+                    }
                 }
             }
         },
