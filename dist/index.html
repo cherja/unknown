@@ -37,8 +37,8 @@
 
 
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-<link rel="stylesheet" href="css/vendor.css?v=1503955185916">
-<link rel="stylesheet" href="css/main.css?v=1503955185916">
+<link rel="stylesheet" href="css/vendor.css?v=1503989854448">
+<link rel="stylesheet" href="css/main.css?v=1503989854448">
 
 
 <!--[if IE]>
@@ -255,12 +255,15 @@
             </div>
             <div class="twelfthblock">
                 <h2>Нужно срочно с нами связаться?</h2>
-                <p>Звоните по телефону:</p>
-                <p><a href="tel: +74955323369">+7 (495) 532-33-66</a><br>или 
-                    <a href="#" data-remodal-target="modal-cb">Заказать звонок менеджера</a>
+                <p>Звоните по телефонам:</p>
+                <p>
+                    <a href="tel: +380662497454">+38 (066) 249-74-54</a><br>
+                    <a href="tel: +380713683132">+38 (071) 368-31-32</a><br><br>
+                    
+                    или <a href="#" data-remodal-target="modal-cb">Закажите звонок менеджера</a>
                 </p>
             </div>
-        
+         
         </div>
 <div class="remodal" data-remodal-id="modal-calc">
     <button data-remodal-action="close" class="remodal-close"></button>
@@ -335,7 +338,7 @@
                 </div>
 
                 <div style="text-align: right;">
-                    <button class="form-calc__button-add" @click.prevent="addPlace">+ Добавить место</button>
+                    <button class="form-calc__button-add" @click.prevent="addPlace" v-if="bigDisplay">+ Добавить место</button>
                 </div>
             </div>
             <br>
@@ -344,7 +347,7 @@
                 <label for="nal" class="form-calc__label-nal">Оплата наложенным платежом</label>
             </div>
 
-            <div v-if="cashPay.active" class="fifty">
+            <div v-if="cashPay.active && typeOfLoad === 'load'" class="fifty">
                 <span>Сумма, р</span>
                 <input autofocus type="number" style="width: 50%; margin-left: 10px;" oninput="this.value = this.value.replace(',', '.')"
                     @input="validate" v-model.number="cashPay.sum">
@@ -382,8 +385,8 @@
 </div>
 <script src="https://use.fontawesome.com/6554f16cff.js"></script>  
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="./js/vendor.js?v=1503955185916"></script>
-<script src="./js/main.js?v=1503955185916"></script>
+<script src="./js/vendor.js?v=1503989854448"></script>
+<script src="./js/main.js?v=1503989854448"></script>
 
 <script type='text/javascript'>
 (function(){ var widget_id = 'BjMhIq9dMV';var d=document;var w=window;function l(){
