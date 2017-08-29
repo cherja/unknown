@@ -71,7 +71,7 @@
                 </div>
 
                 <div style="text-align: right;">
-                    <button class="form-calc__button-add" @click.prevent="addPlace">+ Добавить место</button>
+                    <button class="form-calc__button-add" @click.prevent="addPlace" v-if="bigDisplay">+ Добавить место</button>
                 </div>
             </div>
             <br>
@@ -80,7 +80,7 @@
                 <label for="nal" class="form-calc__label-nal">Оплата наложенным платежом</label>
             </div>
 
-            <div v-if="cashPay.active" class="fifty">
+            <div v-if="cashPay.active && typeOfLoad === 'load'" class="fifty">
                 <span>Сумма, р</span>
                 <input autofocus type="number" style="width: 50%; margin-left: 10px;" oninput="this.value = this.value.replace(',', '.')"
                     @input="validate" v-model.number="cashPay.sum">
