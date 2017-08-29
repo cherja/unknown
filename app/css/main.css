@@ -88,6 +88,8 @@
   background: #fff;
   position: sticky;
   top: 0;
+  width: 100%;
+  z-index: 10;
 }
 .calc__form input {
   display: inline-block;
