@@ -55,7 +55,7 @@
                     <div class="logo"><img src="img/logo.svg" alt="Логотип"></div>
                     <p>Экспресс-доставка грузов<br>по ДНР<br><strong>Работаем с 9<sup>00</sup> до 18<sup>00</sup></strong></p>
                     <div class="btnb" id="toptbuttons">
-                        <button data-remodal-target="modal-cb" class="buttonmodal">
+                        <button data-remodal-target="modal-callcourier" class="buttonmodal">
                         <i class="fa fa-truck"></i>
                         <p>Вызвать курьера</p>
                     </button>
@@ -357,32 +357,6 @@
 
 
 </div>
-<div class="remodal" data-remodal-id="modal-cb">
-    <button data-remodal-action="close" class="remodal-close"></button>
-    <form class="modal callback_form">
-        <p>Заполните форму и в течении 7 минут Вам перезвонит наш менеджер</p>
-
-
-        <p>
-            <label class="label">
-                Ваше имя<br>
-                <input type="text" name="name" class="name">
-            </label>
-        </p>
-
-
-        <p>
-            <label class="label">
-                Контактный телефон<br>
-                <input type="tel" name="phone_number" class="tell">
-            </label>
-        </p>
-
-
-        <p class="submitt"><input type="submit" value="Отправить">
-        </p>
-    </form>
-</div>
 <script src="https://use.fontawesome.com/6554f16cff.js"></script>  
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="./js/vendor.js?v={ver}"></script>
@@ -412,6 +386,56 @@ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = 
                <p class="submitt"><input type="submit" value="Отследить">
                </p>
            </form>
+</div>
+<div class="remodal" data-remodal-id="modal-callcourier">
+    <button data-remodal-action="close" class="remodal-close"></button>
+    <form class="modal callcouire_form">
+        <p>
+            <label class="label">
+                ФИО отправителя<br>
+                <input type="text" name="name_otp" class="name">
+            </label>
+        </p>
+        <p>
+            <label class="label">
+                ФИО получателя<br>
+                <input type="text" name="name_pol" class="name">
+            </label>
+        </p>
+        <p>
+            <label class="label">
+                Город и адрес отправления<br>
+                <input type="text" name="city_otp" class="name">
+            </label>
+        </p>
+        <p>
+            <label class="label">
+                Город и адрес получения<br>
+                <input type="text" name="city_pol" class="name">
+            </label>
+        </p>
+        <p>
+            <label class="label">
+                Приблизительный вес, кг<br>
+                <input type="number" min="0.1" step="0.1" name="weight" class="name">
+            </label>
+        </p>
+
+        <p>
+            <label class="label">
+                Контактный телефон<br>
+                <input type="tel" name="phone" class="tell">
+            </label>
+        </p>
+        <p>
+            <label class="label">
+                <input type="checkbox" name="cashpay" value="Наложенный платеж" class="checkbox">
+                Наложенный платеж                
+            </label>
+        </p>
+        <p class="submitt"><input type="submit" value="Отправить">
+        </p>
+    </form>
 </div>
 </body>
 
