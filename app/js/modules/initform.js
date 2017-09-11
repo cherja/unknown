@@ -22,5 +22,7 @@ function initForm(className, phpScriptName) {
     });
 }
 
-initForm('callback_form', 'callback');
-initForm('callcouire_form', 'callcourier');
+document.addEventListener('DOMContentLoaded', () => {
+    initForm('callback_form', 'callback');
+    initForm('callcouire_form', 'callcourier');
+});
