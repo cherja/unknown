@@ -7,12 +7,12 @@
             <h2 class="form-calc__price">Стоимость доставки<span v-if="total > 0">: {{ total + 'р.'}}</span></h2>
             <span class="form-calc__section-title">Маршрут</span>
             <div class="fifty">
-                <typeahead direction-text="Откуда..." :options="citys" v-model="direction.from.id">
+                <typeahead direction-text="Откуда..." :options="citys" v-model="direction.from">
                 </typeahead>
             </div>
 
             <div class="fifty" >
-                <typeahead direction-text="Куда..." :options="citys" v-model="direction.to.id">
+                <typeahead direction-text="Куда..." :options="citys" v-model="direction.to">
                 </typeahead>
             </div>
 

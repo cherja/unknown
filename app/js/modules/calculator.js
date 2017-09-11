@@ -17,20 +17,18 @@ Vue.component('typeahead', {
                     <ul class="typeahead__list" ref="list" v-if="open" @scroll="onScroll">
                         <li class="typeahead__item" v-for="(option, index) in filteredOptions" :key="index">
                             <a class="typeahead__link"
-                                @mousedown.prevent="select(option)"
+                                @mousedown.prevent="select(index)"
                                 :class="[selectIndex === index ? \'typeahead__active\':\'\']">
-                                {{option.city + " (" + option.region + ")"}}
+                                {{option}}
                             </a>
                         </li>
-                        <li class="no_search" v-if="noSearch">Город не найден...</li>
+                        <li class="no_search" v-if="filteredOptions.length === 0">Город не найден...</li>
                     </ul>
                     </div>`,
         props: {
             options: {
                 type: Array,
-                default () {
-                    return []
-                }
+                default () => []
             },
             value: {
                 type: [String, Number],
@@ -47,8 +45,7 @@ Vue.component('typeahead', {
                 selectIndex: 0,
                 displayText: this.directionText,
                 search: '',
-                count: 15,
-                noSearch: false
+                count: 15
             };
         },
         computed: {
@@ -56,24 +53,16 @@ Vue.component('typeahead', {
                 return this.open ? 'typeahead typeahead__open' : 'typeahead'
             },
             filteredOptions: function() {
-                var search = this.search;
     
-                var afterFilter = this.options.filter(function(option) {
-                    var pathOfCityName = option.city.split('').slice(0, search.length).join('');
-                    if (search.toLowerCase() == pathOfCityName.toLowerCase()) return option.id || option.city;
+                const afterFilter = this.options.filter(option => {
+                    const pathOfCityName = option.split('').slice(0, this.search.length).join('');
+                    if (this.search.toLowerCase() == pathOfCityName.toLowerCase()) return option;
                 });
-    
-    
     
                 if (afterFilter.length >= this.count)
                     afterFilter.length = this.count;
     
-                if (afterFilter.length == 0)
-                    this.noSearch = true;
-                else this.noSearch = false;
-    
-    
-                if (search.length > 0) {
+                if (this.search.length > 0) {
                     return afterFilter.sort(function(a, b) {
                         var cityA = a.city.toUpperCase();
                         var cityB = b.city.toUpperCase();
@@ -114,10 +103,10 @@ Vue.component('typeahead', {
                     this.select(option);
                 }
             },
-            select: function(option) {
-                this.displayText = option.city,
-                    this.search = '',
-                    this.$emit('input', (option.id));
+            select: function(id) {
+                this.displayText = this.options[id];
+                this.search = '';
+                this.$emit('input', id);
                 this.$refs.search.blur();
             },
             toggle: function(e) {
@@ -154,356 +143,280 @@ Vue.component('typeahead', {
     });
     
     
-    var vm = new Vue({
-    
-        el: '#calc',
-        data: {
-            //  Города
-            citys: [
-                { id: 1, city: 'Амвросиевка', region: 'ДНР' },
-                { id: 2, city: 'Горловка', region: 'ДНР' },
-                { id: 3, city: 'Дебальцево', region: 'ДНР' },
-                { id: 4, city: 'Докучаевск', region: 'ДНР' },
-                { id: 5, city: 'Донецк', region: 'ДНР' },
-                { id: 6, city: 'Енакиево', region: 'ДНР' },
-                { id: 7, city: 'Ждановка', region: 'ДНР' },
-                { id: 8, city: 'Зугрес', region: 'ДНР' },
-                { id: 9, city: 'Иловайск', region: 'ДНР' },
-                { id: 10, city: 'Кировское', region: 'ДНР' },
-                { id: 11, city: 'Макеевка', region: 'ДНР' },
-                { id: 12, city: 'Моспино', region: 'ДНР' },
-                { id: 13, city: 'Новоазовск', region: 'ДНР' },
-                { id: 14, city: 'Новый свет', region: 'ДНР' },
-                { id: 15, city: 'Седово', region: 'ДНР' },
-                { id: 16, city: 'Снежное', region: 'ДНР' },
-                { id: 17, city: 'Старобешево', region: 'ДНР' },
-                { id: 18, city: 'Тельманово', region: 'ДНР' },
-                { id: 19, city: 'Торез', region: 'ДНР' },
-                { id: 20, city: 'Углегорск', region: 'ДНР' },
-                { id: 21, city: 'Харцызск', region: 'ДНР' },
-                { id: 22, city: 'Шахтерск', region: 'ДНР' },
-                { id: 23, city: 'Ясиноватая', region: 'ДНР' }
-            ],
-    
-            //  Тарифы и сроки
-            tables: {
-    
-                TZ: [
-                //    0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 21 22 
-                    [1, 3, 4, 4, 4, 3, 3, 3, 2, 3, 3, 3, 4, 3, 4, 3, 3, 4, 3, 4, 3, 3, 3], // 0  Амвросиевка
-                    [3, 1, 2, 4, 3, 2, 2, 2, 3, 2, 3, 4, 5, 4, 5, 3, 4, 5, 3, 2, 3, 3, 3], // 1  Горловка
-                    [4, 2, 1, 4, 3, 2, 2, 2, 4, 2, 3, 4, 5, 4, 5, 3, 4, 5, 3, 2, 3, 3, 3], // 2  Дебальцево
-                    [4, 4, 4, 1, 2, 4, 4, 4, 4, 4, 3, 2, 4, 2, 4, 4, 2, 4, 4, 4, 3, 4, 3], // 3  Докучаевск
-                    [4, 3, 3, 2, 1, 3, 3, 3, 4, 3, 1, 2, 4, 2, 4, 3, 2, 4, 3, 3, 2, 3, 1], // 4  Донецк
-                    [3, 2, 2, 4, 3, 1, 2, 2, 3, 2, 3, 4, 4, 4, 4, 3, 4, 4, 3, 2, 2, 2, 2], // 5  Енакиево
-                    [3, 2, 2, 4, 3, 2, 1, 3, 3, 2, 3, 4, 4, 4, 4, 3, 4, 4, 3, 2, 2, 2, 2], // 6  Ждановка
-                    [3, 2, 2, 4, 3, 2, 3, 1, 3, 3, 3, 4, 4, 4, 4, 3, 4, 4, 3, 2, 2, 2, 2], // 7  Зугрес
-                    [2, 3, 4, 4, 4, 3, 3, 3, 1, 3, 3, 3, 4, 3, 4, 3, 3, 4, 3, 4, 3, 3, 3], // 8  Иловайск
-                    [3, 2, 2, 4, 3, 2, 2, 3, 3, 1, 3, 4, 5, 4, 5, 3, 4, 5, 3, 2, 2, 2, 2], // 9  Кировское
-                    [3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 1, 3, 4, 3, 4, 3, 3, 4, 3, 3, 1, 3, 1], // 10 Макеевка
-                    [3, 4, 4, 2, 2, 4, 4, 4, 3, 4, 3, 1, 4, 2, 4, 4, 2, 4, 3, 4, 3, 3, 3], // 11 Моспино
-                    [4, 5, 5, 4, 4, 4, 4, 4, 4, 5, 4, 4, 1, 4, 2, 5, 4, 1, 5, 5, 4, 4, 4], // 12 Новоазовск
-                    [3, 4, 4, 2, 2, 4, 4, 4, 3, 4, 3, 2, 4, 1, 4, 4, 2, 4, 3, 4, 3, 3, 3], // 13 Новый свет
-                    [4, 5, 5, 4, 4, 4, 4, 4, 4, 5, 4, 4, 2, 4, 1, 5, 4, 2, 5, 5, 4, 4, 4], // 14 Седово
-                    [3, 3, 3, 4, 3, 3, 3, 3, 3, 3, 3, 4, 5, 4, 5, 1, 4, 5, 2, 3, 3, 2, 3], // 15 Снежное
-                    [3, 4, 4, 2, 2, 4, 4, 4, 3, 4, 3, 2, 4, 2, 4, 4, 1, 4, 3, 4, 3, 3, 3], // 16 Старобешево
-                    [4, 5, 5, 4, 4, 4, 4, 4, 4, 5, 4, 4, 3, 4, 2, 5, 4, 1, 5, 5, 4, 4, 4], // 17 Тельманово
-                    [3, 3, 3, 4, 3, 3, 3, 3, 3, 3, 3, 3, 5, 3, 5, 2, 3, 5, 1, 3, 2, 2, 3], // 18 Торез
-                    [4, 2, 2, 4, 3, 2, 2, 2, 4, 2, 3, 4, 5, 4, 5, 3, 4, 5, 3, 1, 3, 3, 3], // 19 Углегорск
-                    [3, 3, 3, 3, 2, 2, 2, 2, 3, 2, 1, 3, 4, 3, 4, 3, 3, 4, 2, 3, 1, 2, 2], // 20 Харцызск
-                    [3, 3, 3, 4, 3, 2, 2, 2, 3, 2, 3, 3, 4, 3, 4, 2, 3, 4, 2, 3, 2, 1, 3], // 21 Шахтерск
-                    [3, 3, 3, 3, 1, 2, 2, 2, 3, 2, 1, 3, 4, 3, 4, 3, 3, 4, 3, 3, 2, 3, 1]  // 22 Ясиноватая
-                ],
-    
-                tariff: [
-                    {
-                        min: 0,
-                        max: 1,
-                        prices: [0, 50, 55, 61, 68, 75, 83],
-                        courierPrice: 60
-                      },
-                      {
-                        min: 1,
-                        max: 5,
-                        prices: [0, 65, 72, 80, 88, 97, 107],
-                        courierPrice: 100
-                      },
-                      {
-                        min: 5,
-                        max: 10,
-                        prices: [0, 75, 83, 92, 102, 113, 125],
-                        courierPrice: 120
-                      },
-                      {
-                        min: 10,
-                        max: 20,
-                        prices: [0, 100, 110, 121, 134, 148, 163],
-                        courierPrice: 140
-                      },
-                      {
-                        min: 20,
-                        max: 35,
-                        prices: [0, 130, 143, 172, 190, 228, 251],
-                        courierPrice: 160
-                      },
-                      {
-                        min: 35,
-                        max: 50,
-                        prices: [0, 150, 165, 198, 218, 262, 289],
-                        courierPrice: 200
-                      },
-                      {
-                        min: 50,
-                        max: Infinity,
-                        prices: [
-                          [0, 0],
-                          [150, 0.7],
-                          [165, 0.8],
-                          [198, 1],
-                          [218, 1.3],
-                          [262, 1.5],
-                          [289, 1.7]
-                        ],
-                        courierPrice: 400
-                      }
-                ]
+var vm = new Vue({
 
-            },
-    
-    
-            //  Направление
-            direction: { from: { id: 0 }, to: { id: 0 } },
-    
-            //  Тип груза по умолчанию
-            typeOfLoad: 'docs',
-    
-            //  Данные груза для расчета
-            load: {
-                weight: 0, //  Вес
-                o: 0, //  Объем
-                price: 0, //  Оценочная стоимость
-            },
-    
-            //  Данные по всем местам
-            loadFields: [],
-    
-            //  Наложенный платеж
-            cashPay: {
-                active: false,
-                sum: false
-            },
-    
-            overlay: false
+    el: '#calc',
+    data: {
+
+        citys: [
+            'Амвросиевка',
+            'Донецк',
+            'Дебальцево',
+            'Докучаевск',
+            'Горловка',
+            'Енакиево',
+            'Ждановка',
+            'Кировское',
+            'Макеевка',
+            'Новоазовск',
+            'Снежное',
+            'Старобешево',
+            'Тельманово',
+            'Торез',
+            'Харцызск',
+            'Шахтерск',
+            'Ясиноватая'
+        ],
+
+        TZ: [
+        //   0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 
+            [1, 3, 3, 3, 3, 3, 3, 3, 3, 4, 3, 3, 4, 3, 2, 3, 3 ], // 0  Амвросиевка
+            [3, 1, 3, 3, 3, 3, 3, 3, 1, 4, 3, 3, 4, 3, 2, 3, 2 ], // 1  Донецк
+            [3, 3, 1, 3, 3, 3, 3, 3, 3, 4, 3, 3, 4, 3, 3, 3, 3 ], // 2  Дебальцево
+            [3, 3, 3, 1, 3, 3, 3, 3, 3, 4, 3, 2, 3, 3, 3, 3, 3 ], // 3  Докучаевск
+            [3, 3, 3, 3, 1, 2, 3, 3, 3, 4, 3, 3, 4, 3, 3, 3, 3 ], // 4  Горловка
+            [3, 3, 3, 3, 2, 1, 2, 2, 3, 4, 3, 3, 4, 3, 3, 3, 3 ], // 5  Енакиево
+            [3, 3, 3, 3, 3, 2, 1, 2, 3, 4, 3, 3, 4, 3, 3, 3, 3 ], // 6  Ждановка
+            [3, 3, 3, 3, 3, 2, 2, 1, 3, 4, 3, 3, 4, 3, 3, 3, 3 ], // 7  Кировское
+            [3, 1, 3, 3, 3, 3, 3, 3, 1, 4, 3, 3, 4, 3, 3, 3, 3 ], // 8  Макеевка
+            [4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 4, 4, 3, 4, 4, 4, 4 ], // 9  Новоазовск
+            [3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 1, 3, 4, 2, 3, 3, 3 ], // 10 Снежное
+            [3, 3, 3, 2, 3, 3, 3, 3, 3, 4, 3, 1, 3, 3, 3, 3, 3 ], // 11 Старобешево
+            [4, 4, 4, 3, 4, 4, 4, 4, 4, 3, 4, 3, 1, 4, 4, 4, 4 ], // 12 Тельманово
+            [3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 3, 3, 4, 1, 3, 2, 3 ], // 13 Торез
+            [3, 2, 3, 3, 3, 3, 3, 3, 2, 4, 3, 3, 4, 3, 1, 2, 3 ], // 14 Харцызск
+            [3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 3, 3, 4, 2, 2, 1, 3 ], // 15 Шахтерск
+            [3, 2, 3, 3, 3, 3, 3, 3, 2, 4, 3, 3, 4, 3, 3, 3, 1 ]  // 16 Ясиноватая
+        ],
+
+        tariff: [
+            { min:  0, max:  2, prices: [ 65,  80, 120, 200] },
+            { min:  2, max:  5, prices: [ 75, 100, 150, 240] },
+            { min:  5, max: 10, prices: [ 95, 120, 180, 300] },
+            { min: 10, max: 20, prices: [130, 150, 220, 350] },
+            { min: 20, max: 35, prices: [165, 180, 270, 410] },
+            { min: 35, max: 50, prices: [210, 230, 350, 470] },
+            { min: 50, max: Infinity, prices: [.8, 1.5, 2.5, 3] }
+        ],
+
+        docsTarif: [60, 70, 80, 90],
+
+        //  Направление
+        direction: { from: 0, to: 0 },
+
+        //  Тип груза по умолчанию
+        typeOfLoad: 'load',
+
+        //  Данные груза для расчета
+        load: {
+            weight: 0, //  Вес
+            o: 0, //  Объем
+            price: 0, //  Оценочная стоимость
         },
-    
-        computed: {
 
-            bigDisplay() {
-                return document.documentElement.clientWidth >= 660;
-            },
+        //  Данные по всем местам
+        loadFields: [],
 
-            TZ() {
-                return (this.direction.from.id > 0 && this.direction.to.id > 0)
-                        ? this.tables.TZ[this.direction.to.id - 1][this.direction.from.id - 1]
-                        : 0
-            },
+        //  Наложенный платеж
+        cashPay: {
+            active: false,
+            sum: false
+        },
 
-            //  Конечный результат
-            total() {
+        overlay: false
+    },
 
-                if (this.TZ > 0) {
+    computed: {
 
-                //  Если выбран тип груза "Документы"
+        bigDisplay() {
+            return document.documentElement.clientWidth >= 660;
+        },
+
+        TZ() {
+            const { form, to } = this.direction;
+            return (from > 0 && to > 0) ? this.tables.TZ[to][from] : 0;
+        },
+
+        //  Конечный результат
+        total() {
+
+            if (this.TZ > 0) {
+
                 if (this.typeOfLoad === 'docs') {
-                    switch (this.TZ) {
-                        case 1: return 50; break;
-                        case 2: return 55; break;
-                        case 3: return 55; break;
-                        case 4: return 60; break;
-                        case 5: return 60; break;
-                        case 6: return 70; break;
-                        case 7: return 120; break;
-                    }
+                    return this.docsTarif[this.TZ];
                 }
-    
-                //  Если выбран тип груза "Груз"
+
                 if (this.typeOfLoad === 'load') {
 
                     let                    
-                        tariff = this.tables.tariff[0],
-                        isFixedPrice = true
+                        tariff = this.tariff[0],
+                        isFixedPrice = true;
 
                     //  Выбираем максимальное значение веса между фактическим и объемным весами
                     const weight = (() => {
                         const
                             volumeWeight = this.load.o * 250,
                             factWeight   = this.load.weight,
-                            maxWeight    = (volumeWeight >= factWeight) ? volumeWeight : factWeight
-                        return this.round(maxWeight)
+                            maxWeight    = (volumeWeight >= factWeight) ? volumeWeight : factWeight;
+                        return this.round(maxWeight);
                     })();
 
                     // Определяем тариф по рассчитанному весу
                     if (weight > 0) {
-                        tariff = this.tables.tariff.find((item, index, array) => {
+                        tariff = this.tariff.find((item, index, array) => {
                             //  Если выбран последний тариф - значит вес > 50 кг и цена уже не фиксированная
-                            if ((index + 1) === array.length) isFixedPrice = false
-                            return (weight > item.min && weight <= item.max)
+                            if ((index + 1) === array.length) isFixedPrice = false;
+                            return (weight > item.min && weight <= item.max);
                         });
 
                         const sums = [
                             (() => {
                                 const
                                     price = tariff.prices[this.TZ],
-                                    totalPrice = (isFixedPrice) ? price : (price[0] + (weight - 50) * price[1])
-                                return this.round(totalPrice)
+                                    totalPrice = (isFixedPrice) ? price : (price[0] + (weight - 50) * price[1]);
+                                return this.round(totalPrice);
                             })(),
-    
+
                             //  Считаем комиссию от оценочной стоимости
                             (() => {
                                 if (this.load.price > 0) {
-                                    const comissSum = this.load.price * 0.005
-                                    return this.round((comissSum > 5) ? comissSum : 5)
-                                } else return 0
+                                    const comissSum = this.load.price * 0.0025;
+                                    return this.round((comissSum > 5) ? comissSum : 5);
+                                } else return 0;
                             })(),
 
                             //  Считаем наложенный платеж
                             (() => {
                                 const
                                     summ = this.cashPay.sum,
-                                    comissNal = this.round(summ * 0.01)
-                                return this.cashPay.active
-                                        ? 50 + comissNal
-                                        : 0
+                                    comissNal = this.round(summ * 0.01);
+                                return this.cashPay.active ? 50 + comissNal : 0;
                             })(),
-    
-                            tariff.courierPrice
-                        ]
+                        ];
 
-                        return sums.reduce((p, c) => p + c, 0)
-                    }   else return 0
-                }
-                
-                    
+                        return sums.reduce((p, c) => p + c, 0);
+                    }   else return 0;
+                }    
             }
-            }
-        },
-    
-        methods: {
-
-            round(num) {
-                return Math.round((num * 100) / 100);
-            },
-    
-            //  Добавить место
-            addPlace: function() {
-                this.loadFields.push({
-    
-                    //  Данные по умолчанию
-                    weight: 10,
-                    o: 0.05,
-                    d: 0,
-                    s: 0,
-                    v: 0,
-                    price: 500,
-                    isCalcO: false, // Рассчитывать ли объем
-                });
-                this.addAll();
-            },
-    
-            //  Удалить место
-            delPlace: function(index) {
-                this.loadFields.splice(index, 1);
-                this.addAll();
-            },
-    
-            //  Сложить параметр мест
-            add: function(param) {
-    
-                this['load'][param] = 0;
-                for (var i = 0; i < this.loadFields.length; i++) {
-                    this['load'][param] += parseFloat(this.loadFields[i][param]);
-                }
-    
-                //  Если функия запущена DOM-элементом - валидируем
-                if (typeof window.event === 'object')
-                    this.validate(window.event);
-            },
-    
-            //  Сложить все параметры мест
-            addAll: function() {
-                this.add('weight');
-                this.add('o');
-                this.add('price');
-            },
-    
-            //  Расчетный объем
-            calcO: function(index) {
-    
-                if (index !== 'close') {
-    
-                    var field = this.loadFields[index];
-    
-                    if (field.d && field.s && field.v)
-                        field.o = ((field.d * field.s * field.v) / 1000000).toFixed(3);
-    
-                    this.addAll();
-                    var elem = this.$refs.volume[0];
-                    if (elem.classList)
-                        elem.classList.remove('novalid');
-                    else
-                        elem.className = elem.className.replace(new RegExp('(^|\\b)' + 'novalid'.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
-                }
-    
-                for (var i = 0; i < this.loadFields.length; i++) {
-                    if (this.loadFields[i].isCalcO == true)
-                        this.loadFields[i].isCalcO = false;
-                }
-                this.overlay = false;                
-            },
-    
-            //  Открываем расчет по габаритам
-            goCalcO: function(index) {
-    
-                this.overlay = true;
-    
-                var field = this.loadFields[index];
-    
-                field.d = 0;
-                field.s = 0;
-                field.v = 0;
-    
-                field.isCalcO = !field.isCalcO;
-            },
-    
-            //  Валидация полей
-            validate: function(event) {
-                var el = event.target;
-                var value = el.value;
-                var matches = function(el, selector) {
-                    return (el.matches || el.matchesSelector || el.msMatchesSelector || el.mozMatchesSelector || el.webkitMatchesSelector).call(el, selector);
-                };
-    
-    
-                if (matches(el, 'input')) {
-    
-                    if (value <= 0) {
-                        if (el.classList)
-                            el.classList.add('novalid');
-                        else
-                            el.className += ' ' + 'novalid';
-                    } else {
-                        if (el.classList)
-                            el.classList.remove('novalid');
-                        else
-                            el.className = el.className.replace(new RegExp('(^|\\b)' + 'novalid'.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
-                    }
-    
-                }
-            }
-        },
-    
-        created: function() {
-            this.addPlace();
         }
-    
-    });
+    },
+
+    methods: {
+
+        round(num) {
+            return Math.round((num * 100) / 100);
+        },
+
+        //  Добавить место
+        addPlace: function() {
+            this.loadFields.push({
+
+                //  Данные по умолчанию
+                weight: 10,
+                o: 0.05,
+                d: 0,
+                s: 0,
+                v: 0,
+                price: 500,
+                isCalcO: false, // Рассчитывать ли объем
+            });
+            this.addAll();
+        },
+
+        //  Удалить место
+        delPlace: function(index) {
+            this.loadFields.splice(index, 1);
+            this.addAll();
+        },
+
+        //  Сложить параметр мест
+        add: function(param) {
+
+            this['load'][param] = 0;
+            for (var i = 0; i < this.loadFields.length; i++) {
+                this['load'][param] += parseFloat(this.loadFields[i][param]);
+            }
+
+            //  Если функия запущена DOM-элементом - валидируем
+            if (typeof window.event === 'object')
+                this.validate(window.event);
+        },
+
+        //  Сложить все параметры мест
+        addAll: function() {
+            this.add('weight');
+            this.add('o');
+            this.add('price');
+        },
+
+        //  Расчетный объем
+        calcO: function(index) {
+
+            if (index !== 'close') {
+
+                var field = this.loadFields[index];
+
+                if (field.d && field.s && field.v)
+                    field.o = ((field.d * field.s * field.v) / 1000000).toFixed(3);
+
+                this.addAll();
+                var elem = this.$refs.volume[0];
+                if (elem.classList)
+                    elem.classList.remove('novalid');
+                else
+                    elem.className = elem.className.replace(new RegExp('(^|\\b)' + 'novalid'.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+            }
+
+            for (var i = 0; i < this.loadFields.length; i++) {
+                if (this.loadFields[i].isCalcO == true)
+                    this.loadFields[i].isCalcO = false;
+            }
+            this.overlay = false;                
+        },
+
+        //  Открываем расчет по габаритам
+        goCalcO: function(index) {
+
+            this.overlay = true;
+
+            var field = this.loadFields[index];
+
+            field.d = 0;
+            field.s = 0;
+            field.v = 0;
+
+            field.isCalcO = !field.isCalcO;
+        },
+
+        //  Валидация полей
+        validate: function(event) {
+            var el = event.target;
+            var value = el.value;
+            var matches = function(el, selector) {
+                return (el.matches || el.matchesSelector || el.msMatchesSelector || el.mozMatchesSelector || el.webkitMatchesSelector).call(el, selector);
+            };
+
+
+            if (matches(el, 'input')) {
+
+                if (value <= 0) {
+                    if (el.classList)
+                        el.classList.add('novalid');
+                    else
+                        el.className += ' ' + 'novalid';
+                } else {
+                    if (el.classList)
+                        el.classList.remove('novalid');
+                    else
+                        el.className = el.className.replace(new RegExp('(^|\\b)' + 'novalid'.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+                }
+
+            }
+        }
+    },
+
+    created: function() {
+        this.addPlace();
+    }
+
+});

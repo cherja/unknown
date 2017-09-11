@@ -1,8 +1,7 @@
 (() => {
 //= calculator.js
-//= form.js
+//= initform.js
 //= bottom.js
-//= callcouirform.js
 })()
 
 
