@@ -168,7 +168,7 @@ var vm = new Vue({
             'Ясиноватая'
         ],
 
-        TZ: [
+        tableTZ: [
         //   0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 
             [1, 3, 3, 3, 3, 3, 3, 3, 3, 4, 3, 3, 4, 3, 2, 3, 3 ], // 0  Амвросиевка
             [3, 1, 3, 3, 3, 3, 3, 3, 1, 4, 3, 3, 4, 3, 2, 3, 2 ], // 1  Донецк
@@ -190,19 +190,19 @@ var vm = new Vue({
         ],
 
         tariff: [
-            { min:  0, max:  2, prices: [ 65,  80, 120, 200] },
-            { min:  2, max:  5, prices: [ 75, 100, 150, 240] },
-            { min:  5, max: 10, prices: [ 95, 120, 180, 300] },
-            { min: 10, max: 20, prices: [130, 150, 220, 350] },
-            { min: 20, max: 35, prices: [165, 180, 270, 410] },
-            { min: 35, max: 50, prices: [210, 230, 350, 470] },
-            { min: 50, max: Infinity, prices: [.8, 1.5, 2.5, 3] }
+            { min:  0, max:  2, prices: [0,  65,  80, 120, 200] },
+            { min:  2, max:  5, prices: [0,  75, 100, 150, 240] },
+            { min:  5, max: 10, prices: [0,  95, 120, 180, 300] },
+            { min: 10, max: 20, prices: [0, 130, 150, 220, 350] },
+            { min: 20, max: 35, prices: [0, 165, 180, 270, 410] },
+            { min: 35, max: 50, prices: [0, 210, 230, 350, 470] },
+            { min: 50, max: Infinity, prices: [0, .8, 1.5, 2.5, 3] }
         ],
 
-        docsTarif: [60, 70, 80, 90],
+        docsTarif: [0, 60, 70, 80, 90],
 
         //  Направление
-        direction: { from: 0, to: 0 },
+        direction: { from: undefined, to: undefined },
 
         //  Тип груза по умолчанию
         typeOfLoad: 'load',
@@ -233,8 +233,8 @@ var vm = new Vue({
         },
 
         TZ() {
-            const { form, to } = this.direction;
-            return (from > 0 && to > 0) ? this.tables.TZ[to][from] : 0;
+            const { from, to } = this.direction;
+            return (from !== undefined && to !== undefined) ? this.tables.TZ[to][from] : 0;
         },
 
         //  Конечный результат
@@ -246,57 +246,54 @@ var vm = new Vue({
                     return this.docsTarif[this.TZ];
                 }
 
-                if (this.typeOfLoad === 'load') {
+                let                    
+                    tariff = this.tariff[0],
+                    isFixedPrice = true;
 
-                    let                    
-                        tariff = this.tariff[0],
-                        isFixedPrice = true;
+                //  Выбираем максимальное значение веса между фактическим и объемным весами
+                const weight = (() => {
+                    const
+                        volumeWeight = this.load.o * 250,
+                        factWeight   = this.load.weight,
+                        maxWeight    = (volumeWeight >= factWeight) ? volumeWeight : factWeight;
+                    return this.round(maxWeight);
+                })();
 
-                    //  Выбираем максимальное значение веса между фактическим и объемным весами
-                    const weight = (() => {
-                        const
-                            volumeWeight = this.load.o * 250,
-                            factWeight   = this.load.weight,
-                            maxWeight    = (volumeWeight >= factWeight) ? volumeWeight : factWeight;
-                        return this.round(maxWeight);
-                    })();
+                // Определяем тариф по рассчитанному весу
+                if (weight > 0) {
+                    tariff = this.tariff.find((item, index, array) => {
+                        //  Если выбран последний тариф - значит вес > 50 кг и цена уже не фиксированная
+                        if ((index + 1) === array.length) isFixedPrice = false;
+                        return (weight > item.min && weight <= item.max);
+                    });
 
-                    // Определяем тариф по рассчитанному весу
-                    if (weight > 0) {
-                        tariff = this.tariff.find((item, index, array) => {
-                            //  Если выбран последний тариф - значит вес > 50 кг и цена уже не фиксированная
-                            if ((index + 1) === array.length) isFixedPrice = false;
-                            return (weight > item.min && weight <= item.max);
-                        });
+                    const sums = [
+                        (() => {
+                            const
+                                price = tariff.prices[this.TZ],
+                                totalPrice = (isFixedPrice) ? price : (price[0] + (weight - 50) * price[1]);
+                            return this.round(totalPrice);
+                        })(),
 
-                        const sums = [
-                            (() => {
-                                const
-                                    price = tariff.prices[this.TZ],
-                                    totalPrice = (isFixedPrice) ? price : (price[0] + (weight - 50) * price[1]);
-                                return this.round(totalPrice);
-                            })(),
+                        //  Считаем комиссию от оценочной стоимости
+                        (() => {
+                            if (this.load.price > 0) {
+                                const comissSum = this.load.price * 0.0025;
+                                return this.round((comissSum > 5) ? comissSum : 5);
+                            } else return 0;
+                        })(),
 
-                            //  Считаем комиссию от оценочной стоимости
-                            (() => {
-                                if (this.load.price > 0) {
-                                    const comissSum = this.load.price * 0.0025;
-                                    return this.round((comissSum > 5) ? comissSum : 5);
-                                } else return 0;
-                            })(),
+                        //  Считаем наложенный платеж
+                        (() => {
+                            const
+                                summ = this.cashPay.sum,
+                                comissNal = this.round(summ * 0.01);
+                            return this.cashPay.active ? 50 + comissNal : 0;
+                        })(),
+                    ];
 
-                            //  Считаем наложенный платеж
-                            (() => {
-                                const
-                                    summ = this.cashPay.sum,
-                                    comissNal = this.round(summ * 0.01);
-                                return this.cashPay.active ? 50 + comissNal : 0;
-                            })(),
-                        ];
-
-                        return sums.reduce((p, c) => p + c, 0);
-                    }   else return 0;
-                }    
+                    return sums.reduce((p, c) => p + c, 0);
+                }   else return 0; 
             }
         }
     },
