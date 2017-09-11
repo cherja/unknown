@@ -128,7 +128,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
             citys: ['Амвросиевка', 'Донецк', 'Дебальцево', 'Докучаевск', 'Горловка', 'Енакиево', 'Ждановка', 'Кировское', 'Макеевка', 'Новоазовск', 'Снежное', 'Старобешево', 'Тельманово', 'Торез', 'Харцызск', 'Шахтерск', 'Ясиноватая'],
 
+<<<<<<< Updated upstream
             tableTZ: [
+=======
+            tariffZones: [
+>>>>>>> Stashed changes
             //   0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 
             [1, 3, 3, 3, 3, 3, 3, 3, 3, 4, 3, 3, 4, 3, 2, 3, 3], // 0  Амвросиевка
             [3, 1, 3, 3, 3, 3, 3, 3, 1, 4, 3, 3, 4, 3, 2, 3, 2], // 1  Донецк
@@ -154,7 +158,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             docsTarif: [0, 60, 70, 80, 90],
 
             //  Направление
+<<<<<<< Updated upstream
             direction: { from: undefined, to: undefined },
+=======
+            direction: {
+                from: false,
+                to: false
+            },
+>>>>>>> Stashed changes
 
             //  Тип груза по умолчанию
             typeOfLoad: 'load',
@@ -187,7 +198,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                     from = _direction.from,
                     to = _direction.to;
 
+<<<<<<< Updated upstream
                 return from !== undefined && to !== undefined ? this.tables.TZ[to][from] : 0;
+=======
+                if (from !== false && to !== false) {
+                    return this.tariffZones[to][from];                    
+                }
+
+>>>>>>> Stashed changes
             },
 
 
@@ -195,12 +213,15 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             total: function total() {
                 var _this2 = this;
 
-                if (this.TZ > 0) {
+                if (this.typeOfLoad === 'docs') {
+                    return this.docsTarif[this.TZ];
+                }
 
-                    if (this.typeOfLoad === 'docs') {
-                        return this.docsTarif[this.TZ];
-                    }
+<<<<<<< Updated upstream
+=======
+                if (this.typeOfLoad === 'load') {
 
+>>>>>>> Stashed changes
                     var tariff = this.tariff[0],
                         isFixedPrice = true;
 
@@ -354,13 +375,26 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         }
 
     });
+
+
+
+    var buttonsClassList = document.getElementById('toptbuttons').classList,
+        headerHeight = document.getElementsByTagName('header')[0].offsetHeight,
+        fixedClass = 'fixed';
+
+    window.onscroll = function () {
+        if (window.pageYOffset >= headerHeight) buttonsClassList.add(fixedClass);else if (buttonsClassList.contains(fixedClass)) buttonsClassList.remove(fixedClass);
+    };
+
+
     function initForm(className, phpScriptName) {
-        document.querySelectorAll(className).forEach(function (form) {
+        document.querySelectorAll('.' + className).forEach(function (form) {
 
             form.addEventListener('submit', function (e) {
                 e.preventDefault();
 
                 var phone = form.querySelector('.tell').value;
+                console.log(phone);
                 if (phone.length < 10) return alert('Убедитесь в правильности введенного номера телефона!');
 
                 $.ajax({
@@ -377,6 +411,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             }, false);
         });
     }
+<<<<<<< Updated upstream
 
     document.addEventListener('DOMContentLoaded', function () {
         initForm('callback_form', 'callback');
@@ -389,4 +424,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     window.onscroll = function () {
         if (window.pageYOffset >= headerHeight) buttonsClassList.add(fixedClass);else if (buttonsClassList.contains(fixedClass)) buttonsClassList.remove(fixedClass);
     };
+=======
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        initForm('callback_form', 'callback');
+        initForm('callcouire_form', 'callcourier');
+    });    
+    
+>>>>>>> Stashed changes
 })();
