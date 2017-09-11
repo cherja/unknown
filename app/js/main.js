@@ -128,7 +128,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
             citys: ['Амвросиевка', 'Донецк', 'Дебальцево', 'Докучаевск', 'Горловка', 'Енакиево', 'Ждановка', 'Кировское', 'Макеевка', 'Новоазовск', 'Снежное', 'Старобешево', 'Тельманово', 'Торез', 'Харцызск', 'Шахтерск', 'Ясиноватая'],
 
-            TZ: [
+            tableTZ: [
             //   0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 
             [1, 3, 3, 3, 3, 3, 3, 3, 3, 4, 3, 3, 4, 3, 2, 3, 3], // 0  Амвросиевка
             [3, 1, 3, 3, 3, 3, 3, 3, 1, 4, 3, 3, 4, 3, 2, 3, 2], // 1  Донецк
@@ -149,12 +149,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             [3, 2, 3, 3, 3, 3, 3, 3, 2, 4, 3, 3, 4, 3, 3, 3, 1] // 16 Ясиноватая
             ],
 
-            tariff: [{ min: 0, max: 2, prices: [65, 80, 120, 200] }, { min: 2, max: 5, prices: [75, 100, 150, 240] }, { min: 5, max: 10, prices: [95, 120, 180, 300] }, { min: 10, max: 20, prices: [130, 150, 220, 350] }, { min: 20, max: 35, prices: [165, 180, 270, 410] }, { min: 35, max: 50, prices: [210, 230, 350, 470] }, { min: 50, max: Infinity, prices: [.8, 1.5, 2.5, 3] }],
+            tariff: [{ min: 0, max: 2, prices: [0, 65, 80, 120, 200] }, { min: 2, max: 5, prices: [0, 75, 100, 150, 240] }, { min: 5, max: 10, prices: [0, 95, 120, 180, 300] }, { min: 10, max: 20, prices: [0, 130, 150, 220, 350] }, { min: 20, max: 35, prices: [0, 165, 180, 270, 410] }, { min: 35, max: 50, prices: [0, 210, 230, 350, 470] }, { min: 50, max: Infinity, prices: [0, .8, 1.5, 2.5, 3] }],
 
-            docsTarif: [60, 70, 80, 90],
+            docsTarif: [0, 60, 70, 80, 90],
 
             //  Направление
-            direction: { from: 0, to: 0 },
+            direction: { from: undefined, to: undefined },
 
             //  Тип груза по умолчанию
             typeOfLoad: 'load',
@@ -184,10 +184,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             },
             TZ: function TZ() {
                 var _direction = this.direction,
-                    form = _direction.form,
+                    from = _direction.from,
                     to = _direction.to;
 
-                return from > 0 && to > 0 ? this.tables.TZ[to][from] : 0;
+                return from !== undefined && to !== undefined ? this.tables.TZ[to][from] : 0;
             },
 
 
@@ -201,53 +201,50 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                         return this.docsTarif[this.TZ];
                     }
 
-                    if (this.typeOfLoad === 'load') {
+                    var tariff = this.tariff[0],
+                        isFixedPrice = true;
 
-                        var tariff = this.tariff[0],
-                            isFixedPrice = true;
+                    //  Выбираем максимальное значение веса между фактическим и объемным весами
+                    var weight = function () {
+                        var volumeWeight = _this2.load.o * 250,
+                            factWeight = _this2.load.weight,
+                            maxWeight = volumeWeight >= factWeight ? volumeWeight : factWeight;
+                        return _this2.round(maxWeight);
+                    }();
 
-                        //  Выбираем максимальное значение веса между фактическим и объемным весами
-                        var weight = function () {
-                            var volumeWeight = _this2.load.o * 250,
-                                factWeight = _this2.load.weight,
-                                maxWeight = volumeWeight >= factWeight ? volumeWeight : factWeight;
-                            return _this2.round(maxWeight);
-                        }();
+                    // Определяем тариф по рассчитанному весу
+                    if (weight > 0) {
+                        tariff = this.tariff.find(function (item, index, array) {
+                            //  Если выбран последний тариф - значит вес > 50 кг и цена уже не фиксированная
+                            if (index + 1 === array.length) isFixedPrice = false;
+                            return weight > item.min && weight <= item.max;
+                        });
 
-                        // Определяем тариф по рассчитанному весу
-                        if (weight > 0) {
-                            tariff = this.tariff.find(function (item, index, array) {
-                                //  Если выбран последний тариф - значит вес > 50 кг и цена уже не фиксированная
-                                if (index + 1 === array.length) isFixedPrice = false;
-                                return weight > item.min && weight <= item.max;
-                            });
+                        var sums = [function () {
+                            var price = tariff.prices[_this2.TZ],
+                                totalPrice = isFixedPrice ? price : price[0] + (weight - 50) * price[1];
+                            return _this2.round(totalPrice);
+                        }(),
 
-                            var sums = [function () {
-                                var price = tariff.prices[_this2.TZ],
-                                    totalPrice = isFixedPrice ? price : price[0] + (weight - 50) * price[1];
-                                return _this2.round(totalPrice);
-                            }(),
+                        //  Считаем комиссию от оценочной стоимости
+                        function () {
+                            if (_this2.load.price > 0) {
+                                var comissSum = _this2.load.price * 0.0025;
+                                return _this2.round(comissSum > 5 ? comissSum : 5);
+                            } else return 0;
+                        }(),
 
-                            //  Считаем комиссию от оценочной стоимости
-                            function () {
-                                if (_this2.load.price > 0) {
-                                    var comissSum = _this2.load.price * 0.0025;
-                                    return _this2.round(comissSum > 5 ? comissSum : 5);
-                                } else return 0;
-                            }(),
+                        //  Считаем наложенный платеж
+                        function () {
+                            var summ = _this2.cashPay.sum,
+                                comissNal = _this2.round(summ * 0.01);
+                            return _this2.cashPay.active ? 50 + comissNal : 0;
+                        }()];
 
-                            //  Считаем наложенный платеж
-                            function () {
-                                var summ = _this2.cashPay.sum,
-                                    comissNal = _this2.round(summ * 0.01);
-                                return _this2.cashPay.active ? 50 + comissNal : 0;
-                            }()];
-
-                            return sums.reduce(function (p, c) {
-                                return p + c;
-                            }, 0);
-                        } else return 0;
-                    }
+                        return sums.reduce(function (p, c) {
+                            return p + c;
+                        }, 0);
+                    } else return 0;
                 }
             }
         },
@@ -381,8 +378,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         });
     }
 
-    initForm('callback_form', 'callback');
-    initForm('callcouire_form', 'callcourier');
+    document.addEventListener('DOMContentLoaded', function () {
+        initForm('callback_form', 'callback');
+        initForm('callcouire_form', 'callcourier');
+    });
     var buttonsClassList = document.getElementById('toptbuttons').classList,
         headerHeight = document.getElementsByTagName('header')[0].offsetHeight,
         fixedClass = 'fixed';
