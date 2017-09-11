@@ -28,7 +28,7 @@ Vue.component('typeahead', {
         props: {
             options: {
                 type: Array,
-                default () => []
+                default: () => []
             },
             value: {
                 type: [String, Number],
