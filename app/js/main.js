@@ -355,7 +355,8 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
     });
     function initForm(className, phpScriptName) {
-        document.querySelectorAll(className).forEach(function (form) {
+        console.log('init!');
+        document.querySelectorAll('.' + className).forEach(function (form) {
 
             form.addEventListener('submit', function (e) {
                 e.preventDefault();

@@ -564,13 +564,16 @@ h1 {
 
 .threedeliveriesform {
   display: table-cell;
+  background: #ffffff;
+  padding: 30px 0 10px 30px;
 }
 
 .threedeliveriesimg {
   display: table-cell;
   width: 400px;
+  transform: scaleX(-1);
   background-image: url(../img/secondbman.jpg);
-  background-position: center center;
+  background-position: right center;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -741,7 +744,7 @@ input {
 
 
 .tbcll {
-  margin: auto;
+  margin: 20px auto 0;
   display: table;
   text-align: left;
   max-width: 800px;
@@ -749,9 +752,9 @@ input {
 
 .tablecellone {
   display: table-cell;
-  width: 40%;
+  width: 50%;
   background-image: url(../img/secondbman.jpg);
-  background-position: top center;
+  background-position: top right;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -760,9 +763,7 @@ input {
 }
 .tablecelltwo {
   display: table-cell;
-  padding: 0 40px;
-  
-  
+  width: 50%;
 }
 
 

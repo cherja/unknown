@@ -1,5 +1,5 @@
 function initForm(className, phpScriptName) {
-    document.querySelectorAll(className).forEach(form => {
+    document.querySelectorAll('.' + className).forEach(form => {
 
         form.addEventListener('submit', e => {
             e.preventDefault();
