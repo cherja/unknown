@@ -234,7 +234,7 @@ var vm = new Vue({
 
         TZ() {
             const { from, to } = this.direction;
-            return (from !== undefined && to !== undefined) ? this.tables.TZ[to][from] : 0;
+            return (from !== undefined && to !== undefined) ? this.tableTZ[to][from] : 0;
         },
 
         //  Конечный результат
