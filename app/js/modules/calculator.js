@@ -14,7 +14,7 @@ Vue.component('typeahead', {
                         >
                         <span class="typeahead__text" ref="text">{{displayText}}</span>
                     </div>
-                    <ul class="typeahead__list" ref="list" v-if="open" @scroll="onScroll">
+                    <ul @mousedown.prevent.stop class="typeahead__list" ref="list" v-if="open" @scroll="onScroll">
                         <li class="typeahead__item" v-for="(option, index) in filteredOptions" :key="index">
                             <a class="typeahead__link"
                                 @mousedown.prevent="select(index)"
@@ -24,7 +24,7 @@ Vue.component('typeahead', {
                         </li>
                         <li class="no_search" v-if="filteredOptions.length === 0">Город не найден...</li>
                     </ul>
-                    </div>`,
+                </div>`,
         props: {
             options: {
                 type: Array,
@@ -97,11 +97,7 @@ Vue.component('typeahead', {
                 }
             },
             onEnterKey: function() {
-                var option = this.filteredOptions[this.selectIndex];
-    
-                if (option) {
-                    this.select(option);
-                }
+                this.select(this.selectIndex);
             },
             select: function(id) {
                 this.displayText = this.options[id];
@@ -288,7 +284,7 @@ var vm = new Vue({
                             const
                                 summ = this.cashPay.sum,
                                 comissNal = this.round(summ * 0.01);
-                            return this.cashPay.active ? 50 + comissNal : 0;
+                            return this.cashPay.active ? 10 + comissNal : 0;
                         })(),
                     ];
 
