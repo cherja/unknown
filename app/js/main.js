@@ -3,9 +3,10 @@
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 (function () {
+
     Vue.component('typeahead', {
 
-        template: '<div :class="typeaheadState">\n                    <div class="typeahead__toggle" ref="toggle" @mousedown.prevent="toggle">\n                        <input type="text" class="typeahead__search"\n                            ref="search"\n                            v-model.trim="search"\n                            @focus="onFocus"\n                            @blur="onBlur"\n                            @keydown.esc="onEscape"\n                            @keydown.down="onDownKey"\n                            @keydown.up="onUpKey"\n                            @keydown.enter="onEnterKey"\n                        >\n                        <span class="typeahead__text" ref="text">{{displayText}}</span>\n                    </div>\n                    <ul class="typeahead__list" ref="list" v-if="open" @scroll="onScroll">\n                        <li class="typeahead__item" v-for="(option, index) in filteredOptions" :key="index">\n                            <a class="typeahead__link"\n                                @mousedown.prevent="select(index)"\n                                :class="[selectIndex === index ? \'typeahead__active\':\'\']">\n                                {{option}}\n                            </a>\n                        </li>\n                        <li class="no_search" v-if="filteredOptions.length === 0">\u0413\u043E\u0440\u043E\u0434 \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D...</li>\n                    </ul>\n                    </div>',
+        template: '<div :class="typeaheadState">\n                    <div class="typeahead__toggle" ref="toggle" @mousedown.prevent="toggle">\n                        <input type="text" class="typeahead__search"\n                            ref="search"\n                            v-model.trim="search"\n                            @focus="onFocus"\n                            @blur="onBlur"\n                            @keydown.esc="onEscape"\n                            @keydown.down="onDownKey"\n                            @keydown.up="onUpKey"\n                            @keydown.enter="onEnterKey"\n                        >\n                        <span class="typeahead__text" ref="text">{{displayText}}</span>\n                    </div>\n                    <ul @mousedown.prevent.stop class="typeahead__list" ref="list" v-if="open" @scroll="onScroll">\n                        <li class="typeahead__item" v-for="(option, index) in filteredOptions" :key="index">\n                            <a class="typeahead__link"\n                                @mousedown.prevent="select(index)"\n                                :class="[selectIndex === index ? \'typeahead__active\':\'\']">\n                                {{option}}\n                            </a>\n                        </li>\n                        <li class="no_search" v-if="filteredOptions.length === 0">\u0413\u043E\u0440\u043E\u0434 \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D...</li>\n                    </ul>\n                </div>',
         props: {
             options: {
                 type: Array,
@@ -79,11 +80,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 }
             },
             onEnterKey: function onEnterKey() {
-                var option = this.filteredOptions[this.selectIndex];
-
-                if (option) {
-                    this.select(option);
-                }
+                this.select(this.selectIndex);
             },
             select: function select(id) {
                 this.displayText = this.options[id];
@@ -238,7 +235,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                         function () {
                             var summ = _this2.cashPay.sum,
                                 comissNal = _this2.round(summ * 0.01);
-                            return _this2.cashPay.active ? 50 + comissNal : 0;
+                            return _this2.cashPay.active ? 10 + comissNal : 0;
                         }()];
 
                         return sums.reduce(function (p, c) {
@@ -355,7 +352,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
     });
     function initForm(className, phpScriptName) {
-        console.log('init!');
         document.querySelectorAll('.' + className).forEach(function (form) {
 
             form.addEventListener('submit', function (e) {
@@ -370,6 +366,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                     data: $(form).serialize(),
                     success: function success() {
                         alert('Спасибо за обращение, ожидайте звонка оператора!');
+                        successForm(form);
                     },
                     error: function error() {
                         alert('Непредвиденная ошибка сервера, обратитесь позже...');
@@ -379,7 +376,19 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         });
     }
 
+    function successForm(form) {
+        form.querySelectorAll('input:not([type="submit"])').forEach(function (input) {
+            return input.value = "";
+        });
+        var parent = form.parentNode;
+        if (parent.classList.contains('remodal')) {
+            var inst = $(parent).remodal();
+            inst.close();
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
+
         initForm('callback_form', 'callback');
         initForm('callcouire_form', 'callcourier');
     });
@@ -390,4 +399,12 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     window.onscroll = function () {
         if (window.pageYOffset >= headerHeight) buttonsClassList.add(fixedClass);else if (buttonsClassList.contains(fixedClass)) buttonsClassList.remove(fixedClass);
     };
+
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('isCashPay').onchange = function (event) {
+            var elemToShow = document.getElementById('cashPaySumm');
+            elemToShow.style.display = event.target.checked ? 'block' : 'none';
+            elemToShow.children[0].focus();
+        };
+    });
 })();

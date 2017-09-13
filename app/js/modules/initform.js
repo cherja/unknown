@@ -13,6 +13,7 @@ function initForm(className, phpScriptName) {
                 data: $(form).serialize(),
                 success: function() {
                     alert('Спасибо за обращение, ожидайте звонка оператора!');
+                    successForm(form);
                 },
                 error: function() {
                     alert('Непредвиденная ошибка сервера, обратитесь позже...');
@@ -22,7 +23,18 @@ function initForm(className, phpScriptName) {
     });
 }
 
+function successForm(form) {
+    form.querySelectorAll('input:not([type="submit"])').forEach(input => input.value = "");
+    const parent = form.parentNode;
+    if (parent.classList.contains('remodal')) {
+        const inst = $(parent).remodal();
+        inst.close();
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+        
     initForm('callback_form', 'callback');
     initForm('callcouire_form', 'callcourier');
+
 });
