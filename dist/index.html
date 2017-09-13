@@ -37,8 +37,8 @@
 
 
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-<link rel="stylesheet" href="css/vendor.css?v=1505193465456">
-<link rel="stylesheet" href="css/main.css?v=1505193465456">
+<link rel="stylesheet" href="css/vendor.css?v=1505302701890">
+<link rel="stylesheet" href="css/main.css?v=1505302701890">
 
 
 <!--[if IE]>
@@ -91,11 +91,11 @@
                     <div class="add-headers">
                         <p class="add-header"><i class="fa fa-check-square" ></i> Наложенный<br>платеж</p>
                         <p class="add-header"><i class="fa fa-check-square"></i> Подъем на<br>этаж</p>
-                        <p class="add-header"><i class="fa fa-check-square"></i> Высокий уровень<br>сервиса</p>                                                
+                        <p class="add-header"><i class="fa fa-check-square"></i> Высокий уровень<br>сервиса</p>                        
                     </div>
                 </div>
             </div>
-            <div class="secondblock">
+            <div class="secondblock" id="offer">
                 <div class="threedeliveries">
                     <div class="threedeliveriesform">
                         <div class="hat">
@@ -105,7 +105,7 @@
                         <form class="callback_form">
                             <p><label  class="label">Ваше имя<br><input type="text" name="name" class="name">
                                 </label></p>
-                            <p><label  class="label">Контактный телефон<br><input type="tel" name="phone_number" class="tell"
+                            <p><label  class="label">Контактный телефон<br><input type="tel" name="phone" class="tell"
                                 ></label></p>
                             <p class="submitt"><input type="submit" value="Получить 3 пробные доставки"></p>
                         </form>
@@ -358,8 +358,8 @@
 </div>
 <script src="https://use.fontawesome.com/6554f16cff.js"></script>  
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="./js/vendor.js?v=1505193465456"></script>
-<script src="./js/main.js?v=1505193465456"></script>
+<script src="./js/vendor.js?v=1505302701890"></script>
+<script src="./js/main.js?v=1505302701890"></script>
 
 <script type='text/javascript'>
 (function(){ var widget_id = 'BjMhIq9dMV';var d=document;var w=window;function l(){
@@ -428,8 +428,11 @@ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = 
             </p>
             <p>
                 <label class="label">
-                    <input type="checkbox" name="cashpay" value="Наложенный платеж" class="checkbox">
+                    <input type="checkbox" id="isCashPay" name="cashpay" value="Наложенный платеж" class="checkbox">
                     Наложенный платеж                
+                </label><br><br>
+                <label class="label" id="cashPaySumm" style="display: none">
+                    Сумма, р <input type="number" name="summ" class="summ" autofocus>
                 </label>
             </p>
             <p class="submitt"><input type="submit" value="Отправить">
@@ -441,7 +444,7 @@ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = 
         <form class="callback_form">
                 <p><label  class="label">Ваше имя<br><input type="text" name="name" class="name">
                     </label></p>
-                <p><label  class="label">Контактный телефон<br><input type="tel" name="phone_number" class="tell"
+                <p><label  class="label">Контактный телефон<br><input type="tel" name="phone" class="tell"
                     ></label></p>
                 <p class="submitt"><input type="submit" value="Заказать звонок"></p>
             </form>

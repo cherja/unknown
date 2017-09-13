@@ -1,15 +1,11 @@
 <?php
+  include('./functions.php');
+  
+  addToDB("reg", $_POST);  
+    
+  $sbj = 'Заказ звонка';
+  $msg = $_POST['name']."<br>".$_POST['phone'];
 
-  $name  = $_POST['name'];
-  $phone = $_POST['phone'];
-
-  //  Запись в БД
-  $sql = 'INSERT INTO reg SET data=now(), name=$name, phone=$phone';
-  include('./db.php');  
-
-  //  Отправка e-mail
-  $subject = 'Заказ звонка';
-  $message = $name.' '.$phone;
-  include('./mail.php');  
+  sendMail($sbj, $msg);
 
 ?>
