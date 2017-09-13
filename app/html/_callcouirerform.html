@@ -40,8 +40,11 @@
             </p>
             <p>
                 <label class="label">
-                    <input type="checkbox" name="cashpay" value="Наложенный платеж" class="checkbox">
+                    <input type="checkbox" id="isCashPay" name="cashpay" value="Наложенный платеж" class="checkbox">
                     Наложенный платеж                
+                </label><br><br>
+                <label class="label" id="cashPaySumm" style="display: none">
+                    Сумма, р <input type="number" name="summ" class="summ" autofocus>
                 </label>
             </p>
             <p class="submitt"><input type="submit" value="Отправить">
