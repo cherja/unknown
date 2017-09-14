@@ -123,7 +123,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         el: '#calc',
         data: {
 
-            citys: ['Амвросиевка', 'Донецк', 'Дебальцево', 'Докучаевск', 'Горловка', 'Енакиево', 'Ждановка', 'Кировское', 'Макеевка', 'Новоазовск', 'Снежное', 'Старобешево', 'Тельманово', 'Торез', 'Харцызск', 'Шахтерск', 'Ясиноватая'],
+            citys: ['Амвросиевка', 'Амвросиевский район', 'Донецк', 'Донецкий горсовет', 'Дебальцево', 'Дебальцевский горсовет', 'Докучаевск', 'Докучаевский горсовет', 'Горловка', 'Горловский горсовет', 'Енакиево', 'Енакиевский горсовет', 'Ждановка', 'Ждановский горсовет', 'Кировское', 'Кировский горсовет', 'Макеевка', 'Макеевский горсовет', 'Новоазовск', 'Новоазовский район', 'Снежное', 'Снежнянский горсовет', 'Старобешево', 'Старобешевский район', 'Тельманово', 'Тельмановский район', 'Торез', 'Торезский горсовет', 'Харцызск', 'Харцызский горсовет', 'Шахтерск', 'Шахтерский горсовет', 'Ясиноватая', 'Ясиноватский горсовет'],
 
             tableTZ: [
             //   0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 
@@ -180,11 +180,27 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 return document.documentElement.clientWidth >= 660;
             },
             TZ: function TZ() {
-                var _direction = this.direction,
+                var tz = void 0,
+                    _direction = this.direction,
                     from = _direction.from,
                     to = _direction.to;
 
-                return from !== undefined && to !== undefined ? this.tableTZ[to][from] : 0;
+                if (from !== undefined && to !== undefined) {
+                    from = Math.floor(from / 2);
+                    to = Math.floor(to / 2);
+                    tz = this.tableTZ[to][from];
+                }
+                return tz;
+            },
+            isRegion: function isRegion() {
+                var _direction2 = this.direction,
+                    from = _direction2.from,
+                    to = _direction2.to;
+
+                return !!(from % 2 || to % 2);
+            },
+            result: function result() {
+                return this.isRegion ? Math.round(this.total * 1.1) : this.total;
             },
 
 
@@ -338,9 +354,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 if (matches(el, 'input')) {
 
                     if (value <= 0) {
-                        if (el.classList) el.classList.add('novalid');else el.className += ' ' + 'novalid';
+                        el.classList ? el.classList.add('novalid') : el.className += ' ' + 'novalid';
                     } else {
-                        if (el.classList) el.classList.remove('novalid');else el.className = el.className.replace(new RegExp('(^|\\b)' + 'novalid'.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+                        el.classList ? el.classList.remove('novalid') : el.className = el.className.replace(new RegExp('(^|\\b)' + 'novalid'.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
                     }
                 }
             }

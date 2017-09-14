@@ -145,23 +145,40 @@ var vm = new Vue({
     data: {
 
         citys: [
-            'Амвросиевка',
+            'Амвросиевка', 
+            'Амвросиевский район',
             'Донецк',
+            'Донецкий горсовет',
             'Дебальцево',
+            'Дебальцевский горсовет',
             'Докучаевск',
+            'Докучаевский горсовет',
             'Горловка',
+            'Горловский горсовет',
             'Енакиево',
+            'Енакиевский горсовет',
             'Ждановка',
+            'Ждановский горсовет',
             'Кировское',
+            'Кировский горсовет',
             'Макеевка',
+            'Макеевский горсовет',
             'Новоазовск',
+            'Новоазовский район',
             'Снежное',
+            'Снежнянский горсовет',
             'Старобешево',
+            'Старобешевский район',
             'Тельманово',
+            'Тельмановский район',
             'Торез',
+            'Торезский горсовет',
             'Харцызск',
+            'Харцызский горсовет',
             'Шахтерск',
-            'Ясиноватая'
+            'Шахтерский горсовет',
+            'Ясиноватая',
+            'Ясиноватский горсовет',
         ],
 
         tableTZ: [
@@ -229,8 +246,23 @@ var vm = new Vue({
         },
 
         TZ() {
+            let tz,
+                { from, to } = this.direction;
+            if (from !== undefined && to !== undefined) {
+                from = Math.floor(from/2);
+                to = Math.floor(to/2);
+                tz = this.tableTZ[to][from];
+            }
+            return tz;
+        },
+
+        isRegion() {
             const { from, to } = this.direction;
-            return (from !== undefined && to !== undefined) ? this.tableTZ[to][from] : 0;
+            return !!(from % 2 || to % 2);
+        },
+
+        result() {
+            return this.isRegion ? Math.round(this.total * 1.1) : this.total;
         },
 
         //  Конечный результат
@@ -393,15 +425,9 @@ var vm = new Vue({
             if (matches(el, 'input')) {
 
                 if (value <= 0) {
-                    if (el.classList)
-                        el.classList.add('novalid');
-                    else
-                        el.className += ' ' + 'novalid';
+                    el.classList ? el.classList.add('novalid') : el.className += ' ' + 'novalid';
                 } else {
-                    if (el.classList)
-                        el.classList.remove('novalid');
-                    else
-                        el.className = el.className.replace(new RegExp('(^|\\b)' + 'novalid'.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+                    el.classList ? el.classList.remove('novalid') : el.className = el.className.replace(new RegExp('(^|\\b)' + 'novalid'.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
                 }
 
             }
