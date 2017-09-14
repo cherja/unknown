@@ -200,7 +200,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 return !!(from % 2 || to % 2);
             },
             result: function result() {
-                return this.isRegion ? Math.round(this.total * 1.1) : this.total;
+                return this.isRegion ? Math.round(this.total * 1.15) : this.total;
             },
 
 

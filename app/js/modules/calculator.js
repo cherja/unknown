@@ -262,7 +262,7 @@ var vm = new Vue({
         },
 
         result() {
-            return this.isRegion ? Math.round(this.total * 1.1) : this.total;
+            return this.isRegion ? Math.round(this.total * 1.15) : this.total;
         },
 
         //  Конечный результат
