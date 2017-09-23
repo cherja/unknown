@@ -1,1 +1,4 @@
-/node_modules/
+node_modules/
+ftp.js
+app/php/_config.php
+dist/php/_config.php
