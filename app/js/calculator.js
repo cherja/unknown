@@ -18,7 +18,7 @@ Vue.component('typeahead', {
                         <li class="typeahead__item" v-for="(option, index) in filteredOptions" :key="index">
                             <a class="typeahead__link"
                                 @mousedown.prevent="select(index)"
-                                :class="[selectIndex === index ? \'typeahead__active\':\'\']">
+                                :class="[selectIndex === index ? 'typeahead__active' : '']">
                                 {{option}}
                             </a>
                         </li>
@@ -209,7 +209,7 @@ var vm = new Vue({
             { min: 10, max: 20, prices: [0, 130, 150, 220, 350] },
             { min: 20, max: 35, prices: [0, 165, 180, 270, 410] },
             { min: 35, max: 50, prices: [0, 210, 230, 350, 470] },
-            { min: 50, max: Infinity, prices: [0, .8, 1.5, 2.5, 3] }
+            { min: 50, max: Infinity, prices: [[0, 0], [210, .8], [230, 1.5], [350, 2.5], [470, 3]]}
         ],
 
         docsTarif: [0, 60, 70, 80, 90],
@@ -261,6 +261,10 @@ var vm = new Vue({
             return !!(from % 2 || to % 2);
         },
 
+        period() {
+            return !this.isRegion ? this.TZ : this.TZ + 1
+        },
+
         result() {
             return this.isRegion ? Math.round(this.total * 1.15) : this.total;
         },
@@ -299,7 +303,7 @@ var vm = new Vue({
                         (() => {
                             const
                                 price = tariff.prices[this.TZ],
-                                totalPrice = (isFixedPrice) ? price : (price[0] + (weight - 50) * price[1]);
+                                totalPrice = isFixedPrice ? price : (price[0] + (weight - 50) * price[1]);
                             return this.round(totalPrice);
                         })(),
 
@@ -417,19 +421,9 @@ var vm = new Vue({
         validate: function(event) {
             var el = event.target;
             var value = el.value;
-            var matches = function(el, selector) {
-                return (el.matches || el.matchesSelector || el.msMatchesSelector || el.mozMatchesSelector || el.webkitMatchesSelector).call(el, selector);
-            };
 
-
-            if (matches(el, 'input')) {
-
-                if (value <= 0) {
-                    el.classList ? el.classList.add('novalid') : el.className += ' ' + 'novalid';
-                } else {
-                    el.classList ? el.classList.remove('novalid') : el.className = el.className.replace(new RegExp('(^|\\b)' + 'novalid'.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
-                }
-
+            if (el.tagName == 'INPUT') {
+                (value <= 0) ? el.classList.add('novalid') : el.classList.remove('novalid')
             }
         }
     },

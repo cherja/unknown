@@ -32,9 +32,7 @@ function successForm(form) {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
         
     initForm('callback_form', 'callback');
     initForm('callcouire_form', 'callcourier');
 
-});

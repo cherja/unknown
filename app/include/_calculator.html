@@ -4,7 +4,7 @@
         <div class="calc__overlay" v-if="overlay" @click="overlay = false"></div>
         <form action="#" class="calc__form">
 
-            <h2 class="form-calc__price">Стоимость доставки<span v-if="total > 0">: {{ result + 'р.'}}</span></h2>
+            <h2 class="form-calc__price">Стоимость доставки<span v-if="total > 0">: {{ result + '₽'}}, {{ 'срок - ' + period + ' раб. дн.' }}</span></h2>
             <span class="form-calc__section-title">Маршрут</span>
             <div class="fifty">
                 <typeahead direction-text="Откуда..." :options="citys" v-model="direction.from">
